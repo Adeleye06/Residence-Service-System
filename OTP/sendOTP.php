@@ -1,29 +1,16 @@
 <?php
-
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Function to generate OTP
-function generateOTP($length = 6) {
-    $characters = '0123456789';
-    $otp = '';
-
-    for ($i = 0; $i < $length; $i++) {
-        $otp .= $characters[rand(0, strlen($characters) - 1)];
-    }
-
-    return $otp;
-}
-
-// Generate OTP
-$otp = generateOTP();
+// Get email and OTP from POST data
+$email = $_POST['email'];
+$otp = $_POST['otp'];
 
 // Email configuration
 $emailSubject = 'Your OTP';
 $emailBody = 'Your OTP is: ' . $otp;
-$recipientEmail = 'enochadeleye3@gmail.com'; // Change this to the recipient's email address
 
 // Sender configuration
 $senderEmail = 'elisha.boehm4@ethereal.email'; // Change this to your email address
@@ -44,7 +31,7 @@ try {
 
     //Recipients
     $mail->setFrom($senderEmail, $senderName);
-    $mail->addAddress($recipientEmail); // Add a recipient
+    $mail->addAddress($email); // Add recipient
 
     //Content
     $mail->isHTML(true);
