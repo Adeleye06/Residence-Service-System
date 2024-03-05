@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roommate Agreement Form</title>
+</head>
+<body>
+    <h2>Roommate Agreement</h2>
+    <form action="#" method="post">
+        <label for="name">1. Name (first and last name): *</label><br>
+        <input type="text" id="name" name="name" required><br>
+        
+        <label for="unit_number">2. Unit Number: *</label><br>
+        <input type="text" id="unit_number" name="unit_number" required><br>
+        
+        <label>3. Do you agree to have guests?</label><br>
+        <input type="radio" id="guest_agreement_yes" name="guest_agreement" value="yes" required>
+        <label for="guest_agreement_yes">Yes</label>
+        <input type="radio" id="guest_agreement_no" name="guest_agreement" value="no" required>
+        <label for="guest_agreement_no">No</label><br>
+        
+        <label>4. If yes, then which of the following do you agree with?</label><br>
+        <input type="checkbox" id="guest_type_daytime" name="guest_type[]" value="daytime">
+        <label for="guest_type_daytime">Daytime</label><br>
+        <input type="checkbox" id="guest_type_evening" name="guest_type[]" value="evening">
+        <label for="guest_type_evening">Evening</label><br>
+        <input type="checkbox" id="guest_type_overnight" name="guest_type[]" value="overnight">
+        <label for="guest_type_overnight">Overnight</label><br>
+        <input type="checkbox" id="guest_type_other" name="guest_type[]" value="other">
+        <label for="guest_type_other">Other:</label>
+        <input type="text" id="guest_type_other_text" name="guest_type_other_text"><br>
+        
+        <label>5. Do you agree to respect one another and be mindful of each other’s boundaries?</label><br>
+        <input type="radio" id="respect_yes" name="respect" value="yes" required>
+        <label for="respect_yes">Yes</label>
+        <input type="radio" id="respect_no" name="respect" value="no" required>
+        <label for="respect_no">No</label><br>
+        
+        <label>6. Do you agree to share the workload of unit cleaning/maintenance?</label><br>
+        <input type="radio" id="cleaning_yes" name="cleaning" value="yes" required>
+        <label for="cleaning_yes">Yes</label>
+        <input type="radio" id="cleaning_no" name="cleaning" value="no" required>
+        <label for="cleaning_no">No</label><br>
+        
+        <label>7. Are you comfortable with sharing between roommates?</label><br>
+        <input type="radio" id="sharing_yes" name="sharing" value="yes" required>
+        <label for="sharing_yes">Yes</label>
+        <input type="radio" id="sharing_no" name="sharing" value="no" required>
+        <label for="sharing_no">No</label><br>
+        
+        <label for="sharing_description">8. Please describe how you intend on sharing with roommates:</label><br>
+        <textarea id="sharing_description" name="sharing_description" rows="4" cols="50" required></textarea><br>
+        
+        <label for="specific_requests">Please describe any specific requests:</label><br>
+        <textarea id="specific_requests" name="specific_requests" rows="4" cols="50"></textarea><br>
+        
+        <label for="sleep_start_time">Sleep Time</label><br>
+        Sleep without interference from noise, music or guests for the time period of
+        <input type="time" id="sleep_start_time" name="sleep_start_time"> 
+        to
+        <input type="time" id="sleep_end_time" name="sleep_end_time"><br>
+        
+        <label>The aforementioned sleep times:</label><br>
+        <input type="checkbox" id="include_weekends" name="include_weekends" value="include_weekends">
+        <label for="include_weekends">Include Weekends</label><br>
+        <input type="checkbox" id="exclude_weekends" name="exclude_weekends" value="exclude_weekends">
+        <label for="exclude_weekends">Do not include weekends</label><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
