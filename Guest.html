@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guest Registration Form</title>
+</head>
+<body>
+    <h2>Guest Registration Form</h2>
+    <form action="#" method="post">
+        <h3>Guest Requested by:</h3>
+        <ol>
+            <li>
+                <label for="requested_name">Name (first and last name):</label><br>
+                <input type="text" id="requested_name" name="requested_name" required>
+            </li>
+            <li>
+                <label for="requested_phone">Phone number:</label><br>
+                <input type="text" id="requested_phone" name="requested_phone" required>
+            </li>
+            <li>
+                <label for="unit_number">Unit Number:</label><br>
+                <input type="text" id="unit_number" name="unit_number" required>
+            </li>
+        </ol>
+        <h3>Guest Information:</h3>
+        <ol>
+            <li>
+                <label for="guest_name">Guest Name (first and last name):</label><br>
+                <input type="text" id="guest_name" name="guest_name" required>
+            </li>
+            <li>
+                <label for="guest_phone">Guest Phone Number:</label><br>
+                <input type="text" id="guest_phone" name="guest_phone" required>
+            </li>
+        </ol>
+        <h3>Stay Details:</h3>
+        <ol>
+            <li>
+                <label for="arrival_date">Guest Arrival Date:</label><br>
+                <input type="date" id="arrival_date" name="arrival_date" required>
+            </li>
+            <li>
+                <label for="departure_date">Guest Departure Date:</label><br>
+                <input type="date" id="departure_date" name="departure_date" required>
+            </li>
+        </ol>
+        <h3>Declaration:</h3>
+        <p>You are responsible for talking to your roommates about your guest and getting their clear approval for the ideas on this form. Failure to do so may result in your loss of privilege to host guests in the future.</p>
+        <label for="agree1">Yes, I agree:</label>
+        <input type="checkbox" id="agree1" name="agree1" required><br>
+        <p>Any violation of our residence community standards or misconduct from you or your guest could result in loss of privilege and further disciplinary action.</p>
+        <label for="agree2">Yes, I agree:</label>
+        <input type="checkbox" id="agree2" name="agree2" required><br>
+        <br>
+        <label for="signature">Signature (Type Your Full Name):</label><br>
+        <input type="text" id="signature" name="signature" required><br>
+        <label for="date">Date:</label><br>
+        <input type="date" id="date" name="date" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
