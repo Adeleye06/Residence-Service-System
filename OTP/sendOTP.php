@@ -4,6 +4,8 @@ require '../vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+
+
 // Get email and OTP from POST data
 $email = $_POST['email'];
 $otp = $_POST['otp'];
