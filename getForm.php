@@ -6,6 +6,12 @@ if(!isset($_SESSION['studentEmail'])){
     die("you did not log in, going to student log in page in 3 seconds");
 }
 
+if (!isset($_GET['id'])){
+    
+    header("refresh:3; url=chooseforms.php");
+    die("you did not choose a form yet, going to choose in 3 seconds");
+}
+
 print "welcome user".$_SESSION['studentEmail']."<br>";
 
 print "this page checks if user filled forms and print them if they had, or let user to fill a new form<br>";
@@ -18,7 +24,7 @@ if ($conn->connect_error) {
 
 
 $sql = "SELECT FORM_FILLED.FILLED_FORM_ID FROM FORM_USER INNER JOIN FORM_FILLED WHERE U_ID = {$_SESSION['U_ID']} AND FORM_ID = {$_GET['id']};";
-print $sql."<br>";
+//print $sql."<br>";
 $result = $conn->query($sql);
 
 if($result->num_rows > 0){
