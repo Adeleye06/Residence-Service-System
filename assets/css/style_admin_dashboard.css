@@ -1,0 +1,146 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif; 
+    line-height: 1.6;
+}
+
+.site-header, .site-footer {
+    background-color: #000; 
+    color: white;
+    padding: 0.2rem 3rem;
+}
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-header .logo, .site-footer .footer-logo {
+    width: 80px; 
+}
+
+.site-header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.site-header nav ul li {
+    margin-left: 20px; 
+}
+
+.site-header nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s;
+}
+
+.site-header nav a:hover {
+    background-color: #555; 
+}
+
+
+.site-footer {
+    text-align: center;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-footer p, .site-footer nav a {
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.site-footer nav a:hover {
+    text-decoration: underline;
+}
+
+.hero-image {
+    width: 100%; 
+    height: 400px; 
+    background-image: url('/Residence-Service-System/assets/images/admin_dashboard_hero.jpg');
+        background-size: cover; 
+        background-position: center; 
+        background-repeat: no-repeat; 
+        display: flex; 
+        align-items: center;
+        justify-content: center; 
+    }
+    
+    .ribbon {
+        width: 100%;
+        height: 30px;
+        background-image: linear-gradient(to right, #6CADDF, #6C9229);
+        display: flex;
+        align-items: center; 
+        padding: 0.5em 3em; 
+    }
+    
+    .ribbon p {
+        font-weight: bold;
+        color: white;
+    }
+   
+    
+    .content-section {
+        background-color: #f0f0f0;
+        padding: 1em 3em;
+        display: flex;
+        flex-direction: column;
+        
+    }
+    
+    h1 {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    
+    .subtitle {
+        color: #666;
+        margin-bottom: 20px;
+    }
+    
+    .tabs-container {
+        display: flex;
+        background-color: #e0e0e0;
+    }
+    
+    .tabs {
+        display: flex;
+        flex-direction: column;
+        margin-right: 0;
+    }
+    
+    .tab {
+        cursor: pointer;
+        padding: 10px;
+        background-color: #e0e0e0; 
+        border-right: none;
+    }
+    
+    .tab.active {
+        background-color: #d0d0d0; 
+        border-right: none;
+    }
+    
+    .tab-content {
+        flex-grow: 1;
+        padding: 20px;
+        display: none;
+        border-left: none;
+    }
+    
+    .active-content {
+        display: block;
+        background-color: #d0d0d0; 
+        border-left: none;
+    }
