@@ -23,7 +23,7 @@ if ($conn->connect_error) {
 }
 
 
-$sql = "SELECT FORM_FILLED.FILLED_FORM_ID FROM FORM_USER INNER JOIN FORM_FILLED WHERE U_ID = {$_SESSION['U_ID']} AND FORM_ID = {$_GET['id']};";
+$sql = "SELECT FORM_FILLED.FILLED_FORM_ID FROM FORM_FILLED JOIN FORM_USER WHERE FORM_USER.U_ID = {$_SESSION['U_ID']} AND FORM_USER.FILLED_FORM_ID = {$_GET['id']};";
 //print $sql."<br>";
 $result = $conn->query($sql);
 
