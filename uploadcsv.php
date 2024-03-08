@@ -1,13 +1,18 @@
 <?php
+session_start();
+if(!isset($_SESSION['U_ID'])){
+    header("refresh:3; url=admin_login.php");
+    die("you did not log in, going to admin log in page in 3 seconds");
+}
 
 if (isset($_POST["submit"])) {
     if ($_FILES['fileToUpload']['error']!=0){
         die('upload did not work correctly');
     }
 
-    if ($_FILES['fileToUpload']['size'] > 30000000){
+    if ($_FILES['fileToUpload']['size'] > 1000000){
         print "<a href='upload.php'>i am sorry i will try again</a><br>";
-        die('this file is too large to upload! Max size is 30MB!! This thing is ' . $_FILES['fileToUpload']['size'] / 1000000 . "MB");
+        die('this file is too large to upload! Max size is 1MB!! This thing is ' . $_FILES['fileToUpload']['size'] / 1000000 . "MB");
     }
 
     $conn = new mysqli("172.22.2.116", "res", "Password1", "residence", "1433");
