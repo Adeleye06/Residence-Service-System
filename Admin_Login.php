@@ -24,6 +24,7 @@ if(isset($_POST['login'])){
                if(password_verify($password, $row['PASSWORD'])){
                    // Password is correct, redirect to admin dashboard
                     $_SESSION['U_ID'] = $row['U_ID'];
+                    $_SESSION['USER_TYPE'] = $row['USER_TYPE'];
                    header("Location: admin_dashboard.php");
                    exit();
                } else {
