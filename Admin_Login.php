@@ -1,4 +1,5 @@
 <?php
+session_start();
 if(isset($_POST['login'])){
     //connection
     $conn = new mysqli("172.22.2.116", "res", "Password1", "residence", "1433");
@@ -11,7 +12,7 @@ if(isset($_POST['login'])){
     $password = $_POST['password'];
     if ($email && $password){
        // Using prepared statements to prevent SQL Injection
-       $sql = "SELECT c.PASSWORD FROM credential c JOIN user u ON u.U_ID = c.U_ID WHERE u.email = ?"; 
+       $sql = "SELECT c.PASSWORD, u.U_ID FROM credential c JOIN user u ON u.U_ID = c.U_ID WHERE u.email = ? AND USER_TYPE IS NOT NULL"; 
        $stmt = $conn->prepare($sql);
        if ($stmt) {
            $stmt->bind_param("s", $email); // 's' indicates the parameter type is a string
@@ -22,23 +23,24 @@ if(isset($_POST['login'])){
                $row = $result->fetch_assoc();
                if(password_verify($password, $row['PASSWORD'])){
                    // Password is correct, redirect to admin dashboard
+                    $_SESSION['U_ID'] = $row['U_ID'];
                    header("Location: admin_dashboard.php");
                    exit();
                } else {
                    // Password is incorrect
-                   echo "<script>alert('Incorrect email or password.');</script>";
+                   echo "Incorrect email or password";
                }
            } else {
                // Email does not exist in the database
-               echo "<script>alert('Incorrect email or password.');</script>";
+               echo "Incorrect email or password";
            }
            $stmt->close();
        } else {
-           echo "<script>alert('Failed to prepare the SQL statement.');</script>";
+           echo "Failed to prepare the SQL statement";
        }
    } else {
        // Email or Password not provided
-       echo "<script>alert('Please enter both email and password.');</script>";
+       echo "Please enter both email and password";
    }
 }
 ?>
