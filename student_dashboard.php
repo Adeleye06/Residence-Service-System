@@ -31,7 +31,7 @@
 </div>
 
 <div class="content-section">
-    <h1>Welcome, [Username]!</h1>
+    <h1>Welcome, <?php session_start(); echo($_SESSION['studentEmail'])?>!</h1>
     <p class="subtitle">Choose the form type you'd like to fill.</p>
     <div class="tabs-container">
         <div class="tabs">

@@ -24,6 +24,7 @@
             }
 
         $email = $conn->real_escape_string($_POST["email"]);
+        
 
         $sql = "SELECT U_ID FROM USER WHERE EMAIL='$email'";
 
@@ -33,7 +34,6 @@
             // Generate OTP
             $_SESSION['firstTimeOtp'] = generateOTP();
             $_SESSION['studentEmail'] = $email;
-
             // Email configuration
             $emailSubject = 'Your OTP';
             $emailBody = 'Your OTP is: ' . $_SESSION['firstTimeOtp'];
@@ -90,11 +90,14 @@
 
         if($otp){
             if($_SESSION['studentEmail'] == $email && $_SESSION['firstTimeOtp'] == $otp){
-                header("refresh:2; url=Guest.html;");
+                header("refresh:2; url=student_dashboard.php;");
+                exit();
             }
+            
         } else{
             header("refresh:2; url=Student_login.php;");
             die('Email and otp required');
+            exit();
         }
 
         
