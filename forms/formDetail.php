@@ -24,7 +24,7 @@ if (isset($_GET['form'])){
     if($result->num_rows > 0){
 print "<form action='saveForm.php'>";
 
-        print "<input type='hidden' name='formid' value='{$_GET['form']}' >";
+        print "<input type='hidden' name='FORM_ID' value='{$_GET['form']}' >";
 
         while ($row = $result->fetch_assoc()) {
            print "question number ".$row['Q_ID']."<br>";
