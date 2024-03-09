@@ -42,6 +42,7 @@ print "<form action='saveForm.php'>";
 
 if (isset($_GET['filled'])){
     print "you are trying to view a filled form<br><br>";
+    $viewingRoommateForms = false;
 
     $conn = new mysqli("172.22.2.116", "res", "Password1", "residence", "1433");
     // Check connection
@@ -49,6 +50,37 @@ if (isset($_GET['filled'])){
         die("Connection failed: " . $conn->connect_error);
     }
 
+    //verify this form is filled by the person logged in, also display the time submitted
+    $time = $conn->query("SELECT TIME FROM FORM_FILLED INNER JOIN FORM_USER ON FORM_FILLED.FILLED_FORM_ID = FORM_USER.FILLED_FORM_ID WHERE FORM_USER.U_ID = {$_SESSION['U_ID']} AND FORM_FILLED.FILLED_FORM_ID = {$_GET['filled']}");
+    if ($time->num_rows != 1){
+        //this form is not filled by the person trying to log in, let's try and see if it is filled by the roommate?
+        $roommates = $conn->query("SELECT U_ID FROM USER WHERE HALL = (SELECT HALL FROM USER WHERE U_ID = {$_SESSION['U_ID']}) AND (SUBSTRING(ROOM,1,2) = (SELECT SUBSTRING(ROOM,1,2) FROM USER WHERE U_ID = {$_SESSION['U_ID']}) OR SUBSTRING(ROOM,1,4) = (SELECT SUBSTRING(ROOM,1,4) FROM USER WHERE U_ID = {$_SESSION['U_ID']}))");
+
+        if($roommates->num_rows > 1){
+            while ($roommate = $roommates->fetch_assoc()) {
+    
+                if ($roommate['U_ID'] == $_SESSION['U_ID']){
+                    continue;//because the SQL statement return all people living in the same room as the request user, it return everyone in the unit so we exclude the poeple themselves.
+                }
+
+                $time = $conn->query("SELECT FORM_FILLED.TIME FROM FORM_FILLED INNER JOIN FORM_USER ON FORM_FILLED.FILLED_FORM_ID = FORM_USER.FILLED_FORM_ID WHERE FORM_USER.U_ID = {$roommate['U_ID']} AND FORM_FILLED.FILLED_FORM_ID = {$_GET['filled']}");
+
+                if ($time->num_rows != 1){
+                    continue;
+                }else{
+                    $viewingRoommateForms = true;
+                    break;
+                }
+            }
+        }
+    }
+
+    //if we did not find the time then we kick the user out (regardless of if the form actually exist we alwasy kick them out)
+    if($time->num_rows != 1){
+        die("you did not fill this form, or this form is not properly saved, why are you trying to look at this?");
+    }
+    print "Time Submitted: ".$time->fetch_assoc()['TIME']."<br><br><br>";
+    
     $sql = "SELECT * FROM FORM_ANSWER WHERE FILLED_FORM_ID = {$_GET['filled']};";
 
     $answers = $conn->query($sql);
@@ -75,6 +107,21 @@ if (isset($_GET['filled'])){
         
             }else{
                 die("we did not find any saved asnwer for this form, there is a error");
+    }
+
+    if($viewingRoommateForms){
+        //check if you have already agreed
+        // $agreed = $conn->query("SELECT U_ID FROM FORM_USER WHERE FILLED_FORM_ID = {$_GET['filled']}");
+        // while ($agreed -> fetch_assoc()['U_ID'] == $_SESSION['U_ID']){
+        //         print 'you have already agreed to this form that your roommate filled';
+        //         die();
+        // }
+        //if not then agree it
+        //since this will only trigger when you have not agree
+        //and when you agree it won't trigger
+        //we don't need a check anymore
+        print 'you should try agree to this form';
+        print "<a href='saveForm.php?agree={$_GET['filled']}'>i agree to this form</a>";
     }
 
     die();
