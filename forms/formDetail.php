@@ -1,3 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="../assets/css/style_student_dashboard.css"> 
+</head>
+<body>
+<header class="site-header">
+        <img src="../assets/images/lc-logo.png" alt="Lethbridge College Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+        <div class="ribbon">
+    <p>Home &gt; Student Dashboard &gt; Form &gt; Form Detail</p>
+</div>
+
+<div class="content-section">
+
 <?php
 
 session_start();
@@ -37,11 +62,11 @@ print "<form action='saveForm.php'>";
     }
 
     print "<button type='submit'>submit</button></form>";
-    die();
-}
+
+}else
 
 if (isset($_GET['filled'])){
-    print "you are trying to view a filled form<br><br>";
+    print "<h1>Saved Form ID {$_GET['filled']}</h1>";
     $viewingRoommateForms = false;
 
     $conn = new mysqli("172.22.2.116", "res", "Password1", "residence", "1433");
@@ -124,10 +149,29 @@ if (isset($_GET['filled'])){
         print "<a href='saveForm.php?agree={$_GET['filled']}'>i agree to this form</a>";
     }
 
-    die();
+
+}else{
+    header("refresh:3; url=home.php");
+    print "you did not do anything to come to this page, please go back to home";
 }
 
-header("refresh:3; url=home.php");
-print "you did not do anything to come to this page, please go back to home"
-
 ?>
+
+
+</div>
+
+
+
+    <footer class="site-footer">
+        <img src="../assets/images/lc-logo.png" alt="Lethbridge College Logo" class="footer-logo">
+        <p>3000 College Dr S, Lethbridge, Alberta, Canada, T1K 1L6</p>
+        <p>1-800-572-0103</p>
+        <nav>
+            <a href="contact.php">Contacts and Maps</a>
+        </nav>
+    </footer>
+
+   
+</body>
+
+</html>

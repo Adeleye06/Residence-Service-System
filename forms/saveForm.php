@@ -1,3 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="../assets/css/style_student_dashboard.css"> 
+</head>
+<body>
+<header class="site-header">
+        <img src="../assets/images/lc-logo.png" alt="Lethbridge College Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+        <div class="ribbon">
+    <p>Home &gt; Student Dashboard &gt; Form &gt; Form Detail &gt; Save Form</p>
+</div>
+
+<div class="content-section">
+
 <?php
 
 session_start();
@@ -61,4 +86,22 @@ foreach ($_GET as $i => $value) {
 
 header("refresh:3; url=../student_dashboard.php");
 print "form saved successfully, now go back to home, thank you!";
-die();
+?>
+
+</div>
+
+
+
+    <footer class="site-footer">
+        <img src="../assets/images/lc-logo.png" alt="Lethbridge College Logo" class="footer-logo">
+        <p>3000 College Dr S, Lethbridge, Alberta, Canada, T1K 1L6</p>
+        <p>1-800-572-0103</p>
+        <nav>
+            <a href="contact.php">Contacts and Maps</a>
+        </nav>
+    </footer>
+
+   
+</body>
+
+</html>

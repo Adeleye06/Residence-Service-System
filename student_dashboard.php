@@ -11,9 +11,9 @@
         <img src="assets/images/lc-logo.png" alt="Lethbridge College Logo" class="logo">
         <nav>
             <ul>
-                <li><a href="profile.php">Profile</a></li>
-                <li><a href="saved-forms.php">My Saved Forms</a></li>
-                <li><a href="support.php">Contact Support</a></li>
+                <!-- <li><a href="profile.php">Profile</a></li> -->
+                <!-- <li><a href="saved-forms.php">My Saved Forms</a></li> -->
+                <!-- <li><a href="support.php">Contact Support</a></li> -->
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
@@ -31,18 +31,20 @@
 </div>
 
 <div class="content-section">
-    <h1>Welcome, <?php session_start(); echo($_SESSION['studentEmail'])?>!</h1>
+    <h1>Welcome, <?php session_start(); echo($_SESSION['F_NAME'])?>!</h1>
     <p class="subtitle">Choose the form type you'd like to fill.</p>
     <div class="tabs-container">
         <div class="tabs">
-            <div class="tab active" onclick="openTab('studentForm');">Student Form Submission</div>
-            <div class="tab" onclick="openTab('guestForm');">Guest Form Submission</div>
+            <div class="tab active" onclick="openTab('studentForm');">Roommate Agreement Form</div>
+            <div class="tab" onclick="openTab('guestForm');">Guest Registration Form</div>
         </div>
         <div id="studentForm" class="tab-content active-content">
-            <!-- Student Form Content Goes Here -->
+            <p>Roommate Agreement Form is a form that is required for all resident, you need to fill it every semester if you have roommates. You should do it with your roommates together, so you can make rules of living together and know each other.</p>
+            <a href="forms/getForm.php?id=2">Click this to go to the form</a>
         </div>
         <div id="guestForm" class="tab-content">
-            <!-- Guest Form Content Goes Here -->
+        <p>Guest form is required for you to fill when you have a overnight guest you would like to host in your residence unit. We ask you to fill this so we know who is there in emeregncy situation, and we would be able to issue you guest parking in the office when you fill this</p>
+            <a href="forms/getForm.php?id=1">Click this to go to the form</a>
         </div>
     </div>
 </div>

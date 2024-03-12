@@ -1,3 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="../assets/css/style_student_dashboard.css"> 
+</head>
+<body>
+<header class="site-header">
+        <img src="../assets/images/lc-logo.png" alt="Lethbridge College Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+        <div class="ribbon">
+    <p>Home &gt; Admin Dashboard &gt; All Forms </p>
+</div>
+
+<div class="content-section">
+
 <?php
 
 session_start();
@@ -32,3 +57,21 @@ if ($forms -> num_rows > 0){
 }else{
     print "no saved forms for this one";
 }
+?>
+</div>
+
+
+
+    <footer class="site-footer">
+        <img src="../assets/images/lc-logo.png" alt="Lethbridge College Logo" class="footer-logo">
+        <p>3000 College Dr S, Lethbridge, Alberta, Canada, T1K 1L6</p>
+        <p>1-800-572-0103</p>
+        <nav>
+            <a href="contact.php">Contacts and Maps</a>
+        </nav>
+    </footer>
+
+   
+</body>
+
+</html>
