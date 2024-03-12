@@ -25,13 +25,15 @@
 
         $email = $conn->real_escape_string($_POST["email"]);
         
-        $result = $conn->query("SELECT U_ID FROM USER WHERE EMAIL='$email'");
+        $result = $conn->query("SELECT U_ID, F_NAME FROM USER WHERE EMAIL='$email'");
 
 
         if($result->num_rows == 1){
             // Generate OTP
             $_SESSION['firstTimeOtp'] = generateOTP();
             $_SESSION['studentEmail'] = $email;
+            $i = $result->fetch_assoc()
+            $_SESSION['F_NAME'] = $i['F_NAME'];     
             $_SESSION['U_ID'] = $result->fetch_assoc()['U_ID'];
             // Email configuration
             $emailSubject = 'Your OTP';
