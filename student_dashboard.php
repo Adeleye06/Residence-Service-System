@@ -22,9 +22,14 @@
         <div class="hero-image">
                         
         </div>
-
         <div class="ribbon">
-    <p>Home &gt;&gt; Student Dashboard</p>
+        <nav>
+        <ul>
+            <li><a href="index.php">Home</a> <span>&gt;&gt;</span></li>
+            <li><a href="student_dashboard.php">Student Dashboard</a></li>
+        </ul>
+        </nav>
+    
 </div>
 <div class="content-section">
     

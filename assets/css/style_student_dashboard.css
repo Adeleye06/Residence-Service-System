@@ -51,6 +51,7 @@ body {
     text-align: center;
     position: fixed;
   left: 0;
+  top: 50;
   bottom: 0;
     display: flex;
     justify-content: space-between;
@@ -88,17 +89,36 @@ body {
         padding: 0.5em 3em; 
     }
     
-    .ribbon p {
-        font-weight: bold;
-        color: white;
+    .ribbon ul li {
+        display: inline; 
+        list-style: none; 
     }
-   
     
+   
+    .ribbon ul li a {
+        font-weight: bold;
+        color: white; 
+        text-decoration: none; 
+    }
+    
+    
+    .ribbon ul li a:hover {
+        color: blue; 
+    }
+    
+    
+    .ribbon ul li span {
+        color: white; 
+        text-decoration: none; 
+    }
+
     .content-section {
         background-color: #f0f0f0;
         padding: 1em 3em;
         display: flex;
         flex-direction: column;
+        padding-bottom: 100px;
+        
         
     }
     
@@ -115,6 +135,7 @@ body {
     .tabs-container {
         display: flex;
         background-color: #e0e0e0;
+        margin-bottom: 100px;
     }
     
     .tabs {
