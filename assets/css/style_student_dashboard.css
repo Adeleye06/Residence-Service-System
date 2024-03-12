@@ -49,10 +49,13 @@ body {
 
 .site-footer {
     text-align: center;
-    
+    position: fixed;
+  left: 0;
+  bottom: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%; 
 }
 
 .site-footer p, .site-footer nav a {
