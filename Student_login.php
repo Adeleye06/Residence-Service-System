@@ -32,9 +32,9 @@
             // Generate OTP
             $_SESSION['firstTimeOtp'] = generateOTP();
             $_SESSION['studentEmail'] = $email;
-            $i = $result->fetch_assoc()
-            $_SESSION['F_NAME'] = $i['F_NAME'];     
-            $_SESSION['U_ID'] = $result->fetch_assoc()['U_ID'];
+            $student = $result->fetch_assoc();
+            $_SESSION['F_NAME'] = $student['F_NAME'];     
+            $_SESSION['U_ID'] = $student['U_ID'];
             // Email configuration
             $emailSubject = 'Your OTP';
             $emailBody = 'Your OTP is: ' . $_SESSION['firstTimeOtp'];
