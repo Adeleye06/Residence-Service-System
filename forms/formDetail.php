@@ -17,8 +17,16 @@
         </nav>
     </header>
     
-        <div class="ribbon">
-    <p>Home &gt; Student Dashboard &gt; Form &gt; Form Detail</p>
+    <div class="ribbon">
+        <nav>
+        <ul>
+            <li><a href="index.php">Home</a> <span>&gt;&gt;</span></li>
+            <li><a href="student_dashboard.php">Student Dashboard</a> <span>&gt;&gt;</span></li>
+            <li><a href="getForm.php">Forms</a> <span>&gt;&gt;</span> </li>
+            <li><a href="formDetail.php">Form Detail</a>
+        </ul>
+        </nav>
+    
 </div>
 
 <div class="content-section">
