@@ -27,7 +27,7 @@
 
     session_start();
     if(!isset($_SESSION['U_ID'])){
-        header("refresh:3; url=admin_login.php");
+        header("refresh:3; url=../Admin_Login.php");
         die("you did not log in, going to admin log in page in 3 seconds");
     }
 
