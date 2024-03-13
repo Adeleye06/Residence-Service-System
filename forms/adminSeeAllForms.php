@@ -27,15 +27,8 @@
 
     session_start();
     require "../database.php";
-    if(!isset($_SESSION['U_ID'])){
-        header("refresh:3; url=../Admin_Login.php");
-        die("you did not log in, going to admin log in page in 3 seconds");
-    }
-
-    if(isset($_SESSION['USER_TYPE'])){
-        header("refresh:3; url=Student_login.php");
-        die("Students can not access this page");
-    } else{
+    require "../authentication.php";
+    quitIfNotAdmin();
         $conn = database();
 
         $forms = $conn->query("SELECT * FROM FORM_FILLED");
@@ -57,7 +50,6 @@
         }
     }else{
         print "no saved forms for this one";
-    }
     }
     ?>
     </div>

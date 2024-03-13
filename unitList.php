@@ -1,3 +1,7 @@
+<?php
+require "authentication.php";
+quitIfNotAdmin();
+?>
 <html>
 <head>
 <script>

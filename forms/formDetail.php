@@ -34,10 +34,8 @@
 <?php
 session_start();
 require "../database.php";
-if(!isset($_SESSION['studentEmail'])){
-    header("refresh:3; url=student_login.php");
-    die("you did not log in, going to student log in page in 3 seconds");
-}
+require "authentication.php";
+quitIfNotLoggedIn();
 
 
 if (isset($_GET['form'])){

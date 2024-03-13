@@ -1,6 +1,8 @@
 <?php
 
 require "database.php";
+require "authentication.php";
+quitIfNotAdmin();
 
 $conn = database();
 
