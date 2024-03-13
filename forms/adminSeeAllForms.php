@@ -26,6 +26,7 @@
     <?php
 
     session_start();
+    require "../database.php";
     if(!isset($_SESSION['U_ID'])){
         header("refresh:3; url=../Admin_Login.php");
         die("you did not log in, going to admin log in page in 3 seconds");
@@ -35,11 +36,7 @@
         header("refresh:3; url=Student_login.php");
         die("Students can not access this page");
     } else{
-        $conn = new mysqli("172.22.2.116", "res", "Password1", "residence", "1433");
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+        $conn = database();
 
         $forms = $conn->query("SELECT * FROM FORM_FILLED");
 

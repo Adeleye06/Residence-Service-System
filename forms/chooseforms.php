@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+require "../database.php";
 if(!isset($_SESSION['studentEmail'])){
     header("refresh:3; url=student_login.php");
     die("you did not log in, going to student log in page in 3 seconds");
@@ -9,11 +10,7 @@ if(!isset($_SESSION['studentEmail'])){
 print "this page lists all forms in the database and let user to choose the forms they like to use<br><br>";
 
         //connection
-        $conn = new mysqli("172.22.2.116", "res", "Password1", "residence", "1433");
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+        $conn = database();
 
             $sql = "SELECT * FROM FORM_TYPE";
 

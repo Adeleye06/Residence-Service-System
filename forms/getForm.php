@@ -32,6 +32,7 @@
 <?php
 
 session_start();
+require "../database.php";
 if(!isset($_SESSION['U_ID'])){
     header("refresh:3; url=index.php");
     die("you did not log in, going to student log in page in 3 seconds");
@@ -47,11 +48,7 @@ print "<h1>Welcome User ".$_SESSION['F_NAME']."</h1>";
 
 print "<p>If you or your roommate have filled this form before, you will be able to refer back to them. Or you can choose to fill a new form. </p>";
 
-$conn = new mysqli("172.22.2.116", "res", "Password1", "residence", "1433");
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+$conn = database();
 
 
 $sql = "SELECT FORM_FILLED.FILLED_FORM_ID FROM FORM_FILLED INNER JOIN FORM_USER ON FORM_FILLED.FILLED_FORM_ID = FORM_USER.FILLED_FORM_ID WHERE FORM_USER.U_ID = {$_SESSION['U_ID']} AND FORM_FILLED.FORM_ID = {$_GET['id']}";

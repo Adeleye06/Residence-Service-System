@@ -1,10 +1,9 @@
 <?php
 
-$conn = new mysqli("172.22.2.116", "res", "Password1", "residence", "1433");
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require "database.php";
+
+$conn = database();
+
 $result = $conn->query("
 SELECT U_ID, F_NAME, L_NAME FROM USER WHERE SUBSTRING(ROOM,1,2) = '{$_GET['unit']}' OR SUBSTRING(ROOM,1,4) = '{$_GET['unit']}'
 ");

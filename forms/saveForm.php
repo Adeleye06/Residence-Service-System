@@ -26,17 +26,14 @@
 <?php
 
 session_start();
+require "../database.php";
 if(!isset($_SESSION['studentEmail'])){
     header("refresh:3; url=student_login.php");
     die("you did not log in, going to student log in page in 3 seconds");
 }
 
 if(isset($_GET['agree'])){    //agreeing a form
-    $conn = new mysqli("172.22.2.116", "res", "Password1", "residence", "1433");
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+    $conn = database();
 //TODO: check if you can agree before allow you to agree
     $conn -> query("INSERT INTO FORM_USER (U_ID, FILLED_FORM_ID) VALUES ({$_SESSION['U_ID']}, {$_GET['agree']})");
     header("refresh:3; url=../student_dashboard.php");
@@ -49,11 +46,7 @@ if(!isset($_GET['FORM_ID'])){
 }
 
 
-$conn = new mysqli("172.22.2.116", "res", "Password1", "residence", "1433");
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+$conn = database();
 
 //create a new filled form entry
 $sql = "INSERT INTO FORM_FILLED (FORM_ID, TIME) VALUES ({$_GET['FORM_ID']}, NOW())";

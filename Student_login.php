@@ -1,5 +1,6 @@
     <?php
         require './vendor/autoload.php';
+        require "database.php";
         use PHPMailer\PHPMailer\PHPMailer;
         use PHPMailer\PHPMailer\Exception;
         session_start();
@@ -17,11 +18,7 @@
             }
 
             //connection
-            $conn = new mysqli("172.22.2.116", "res", "Password1", "residence", "1433");
-                // Check connection
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
+            $conn = database();
 
             $email = $conn->real_escape_string($_POST["email"]);
             
@@ -82,11 +79,7 @@
         
         if(isset($_POST['login'])){
             //connection
-            $conn = new mysqli("172.22.2.116", "res", "Password1", "residence", "1433");
-                // Check connection
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
+            $conn = database();
             $email = $conn->real_escape_string($_POST["email"]);
             $otp = $_POST['password'];
 

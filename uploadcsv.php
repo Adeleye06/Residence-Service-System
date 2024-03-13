@@ -1,5 +1,6 @@
 <?php
 session_start();
+require "database.php";
 if(!isset($_SESSION['U_ID'])){
     header("refresh:3; url=admin_login.php");
     die("you did not log in, going to admin log in page in 3 seconds");
@@ -15,10 +16,7 @@ if (isset($_POST["submit"])) {
         die('this file is too large to upload! Max size is 1MB!! This thing is ' . $_FILES['fileToUpload']['size'] / 1000000 . "MB");
     }
 
-    $conn = new mysqli("172.22.2.116", "res", "Password1", "residence", "1433");
-    if ($conn->connect_error) {
-        die("could not connect to database: ". $conn->connect_error);
-    }
+    $conn = database();
     $conn->options(MYSQLI_OPT_LOCAL_INFILE, true);
 
     //filename

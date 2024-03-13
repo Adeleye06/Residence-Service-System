@@ -32,8 +32,8 @@
 <div class="content-section">
 
 <?php
-
 session_start();
+require "../database.php";
 if(!isset($_SESSION['studentEmail'])){
     header("refresh:3; url=student_login.php");
     die("you did not log in, going to student log in page in 3 seconds");
@@ -43,11 +43,7 @@ if(!isset($_SESSION['studentEmail'])){
 if (isset($_GET['form'])){
     print "you are trying to fill a new form<br><br>";
 
-    $conn = new mysqli("172.22.2.116", "res", "Password1", "residence", "1433");
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    $conn = database();
 
     
     $sql = "SELECT * FROM QUESTION WHERE FORM_ID = {$_GET['form']}";
@@ -77,11 +73,7 @@ if (isset($_GET['filled'])){
     print "<h1>Saved Form ID {$_GET['filled']}</h1>";
     $viewingRoommateForms = false;
 
-    $conn = new mysqli("172.22.2.116", "res", "Password1", "residence", "1433");
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    $conn = database();
 
     //verify this form is filled by the person logged in, also display the time submitted
     $time = $conn->query("SELECT TIME FROM FORM_FILLED INNER JOIN FORM_USER ON FORM_FILLED.FILLED_FORM_ID = FORM_USER.FILLED_FORM_ID WHERE FORM_USER.U_ID = {$_SESSION['U_ID']} AND FORM_FILLED.FILLED_FORM_ID = {$_GET['filled']}");
