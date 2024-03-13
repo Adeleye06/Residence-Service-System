@@ -16,16 +16,16 @@ quitIfNotAdmin();
         <img src="assets/images/lc-logo.png" alt="Lethbridge College Logo" class="logo">
         <nav>
             <ul>
-                <li><a href="profile.php">Profile</a></li>
+                <!-- <li><a href="profile.php">Profile</a></li>
                 <li><a href="saved-forms.php">My Saved Forms</a></li>
-                <li><a href="support.php">Contact Support</a></li>
+                <li><a href="support.php">Contact Support</a></li> -->
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>
     
         <div class="hero-image">
-                        
+            
         </div>
 
         <div class="ribbon">

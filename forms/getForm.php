@@ -37,7 +37,6 @@ require "authentication.php";
 quitIfNotLoggedIn();
 
 if (!isset($_GET['id'])){
-    
     header("refresh:3; url=chooseforms.php");
     die("you did not choose a form yet, going to choose in 3 seconds");
 }
