@@ -1,9 +1,15 @@
     <?php
+    
+    session_start();
         require './vendor/autoload.php';
         require "database.php";
+        require "authentication.php";
         use PHPMailer\PHPMailer\PHPMailer;
         use PHPMailer\PHPMailer\Exception;
-        session_start();
+
+        if (loggedIn()){
+            echo "You Already Logged in!";
+        }
 
         if(isset($_POST['generateOTP'])){
             function generateOTP($length = 6) {
@@ -126,21 +132,18 @@
                     <h2>Student Login</h2><br>
                     <form action="Student_login.php" method="POST">
                         <label for="email">College email address</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" value="<?php
+                        if(isset($_POST["generateOTP"])){
+                            echo $_POST["email"];
+                        }
+                        ?>" required>
         
-                        <label for="password">OTP</label>
-                        <input type="password" id="password" name="password" >
-        
-                        <label class="checkbox-container">Remember Me &nbsp;
-                            <input type="checkbox" name="remember-me">
-                            <span class="checkmark"></span>
-                        </label>
+                        <label for="password">OTP</label><br>
+                        <input id="password" name="password" type="text" inputmode="numeric" maxlength="6">
         
                         <button type="submit" name="generateOTP">Generate OTP</button>
                         <button type="submit" name="login">Log In</button>
                     </form>
-
-                    <a href="reset-password.php">Lost your password?</a> <!-- reset-password.php create -->
                 </div>
             </div>
     </div>

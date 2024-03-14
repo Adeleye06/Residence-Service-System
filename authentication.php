@@ -24,8 +24,12 @@ function quitIfNotAdmin(){
 }
 
 function quitIfNotLoggedIn(){
-    if(!isset($_SESSION['U_ID'])){
+    if(!loggedIn()){
         //header("refresh:3; url=index.php");
         die("You did not log in, redirecting to log in page in 3 seconds");
     }
+}
+
+function loggedIn(){
+    return isset($_SESSION['U_ID']);
 }

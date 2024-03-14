@@ -1,12 +1,13 @@
 <?php
 session_start();
+require "database.php";
+require "authentication.php";
+if (loggedIn()){
+    echo "You Already Logged in!";
+}
 if(isset($_POST['login'])){
     //connection
-    $conn = new mysqli("172.22.2.116", "res", "Password1", "residence", "1433");
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    $conn = database();
 
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -66,14 +67,9 @@ if(isset($_POST['login'])){
                     <label for="email">College email address</label>
                     <input type="email" id="email" name="email" required>                    
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                    <label class="checkbox-container">Remember Me &nbsp;
-                        <input type="checkbox" name="remember-me">
-                        <span class="checkmark"></span>
-                    </label>                    
+                    <input type="password" id="password" name="password" required>               
                     <button type="submit" name="login">Log In</button>
                 </form>
-                <a href="reset-password.php">Lost your password?</a> <!-- reset-password.php create -->
             </div>
         </div>
     </div>
