@@ -27,7 +27,7 @@
 
 session_start();
 require "../database.php";
-require "authentication.php";
+require "../authentication.php";
 quitIfNotLoggedIn();
 
 if(isset($_GET['agree'])){    //agreeing a form
