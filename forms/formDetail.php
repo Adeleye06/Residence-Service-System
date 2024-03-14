@@ -34,7 +34,7 @@
 <?php
 session_start();
 require "../database.php";
-require "authentication.php";
+require "../authentication.php";
 quitIfNotLoggedIn();
 
 
@@ -73,6 +73,10 @@ if (isset($_GET['filled'])){
 
     $conn = database();
 
+    if (isset($_SESSION['USER_TYPE'])){
+        //this user is a admin then, display regardless
+        $time = $conn->query("SELECT TIME FROM FORM_FILLED WHERE FORM_FILLED.FILLED_FORM_ID = {$_GET['filled']}");
+    }else{
     //verify this form is filled by the person logged in, also display the time submitted
     $time = $conn->query("SELECT TIME FROM FORM_FILLED INNER JOIN FORM_USER ON FORM_FILLED.FILLED_FORM_ID = FORM_USER.FILLED_FORM_ID WHERE FORM_USER.U_ID = {$_SESSION['U_ID']} AND FORM_FILLED.FILLED_FORM_ID = {$_GET['filled']}");
     if ($time->num_rows != 1){
@@ -97,6 +101,8 @@ if (isset($_GET['filled'])){
             }
         }
     }
+    }
+
 
     //if we did not find the time then we kick the user out (regardless of if the form actually exist we alwasy kick them out)
     if($time->num_rows != 1){

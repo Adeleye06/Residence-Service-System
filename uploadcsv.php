@@ -1,3 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="assets/css/style_admin_dashboard.css"> 
+</head>
+<body>
+<header class="site-header">
+        <img src="assets/images/lc-logo.png" alt="Lethbridge College Logo" class="logo">
+        <nav>
+            <ul>
+                <!-- <li><a href="profile.php">Profile</a></li>
+                <li><a href="saved-forms.php">My Saved Forms</a></li>
+                <li><a href="support.php">Contact Support</a></li> -->
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+        <div class="ribbon">
+    <p>Home &gt; Admin Dashboard &gt; Residents Import</p>
+</div>
+
+
+<div class="content-section">    
 <?php
 session_start();
 require "database.php";
@@ -10,8 +37,8 @@ if (isset($_POST["submit"])) {
     }
 
     if ($_FILES['fileToUpload']['size'] > 1000000){
-        print "<a href='upload.php'>i am sorry i will try again</a><br>";
-        die('this file is too large to upload! Max size is 1MB!! This thing is ' . $_FILES['fileToUpload']['size'] / 1000000 . "MB");
+        print "<a href=''>Try Again</a><br>";
+        die('This file is too large to upload! Max size is 1MB!! This thing is ' . $_FILES['fileToUpload']['size'] / 1000000 . "MB");
     }
 
     $conn = database();
@@ -71,3 +98,15 @@ print "<!DOCTYPE html>
 </body>
 </html>";
 ?>
+</div>
+<footer class="site-footer">
+        <img src="assets/images/lc-logo.png" alt="Lethbridge College Logo" class="footer-logo">
+        <p>3000 College Dr S, Lethbridge, Alberta, Canada, T1K 1L6</p>
+        <p>1-800-572-0103</p>
+        <nav>
+            <a href="contact.php">Contacts and Maps</a>
+        </nav>
+    </footer>
+   
+</body>
+</html>

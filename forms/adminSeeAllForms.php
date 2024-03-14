@@ -46,6 +46,7 @@
                     print $user['ROOM'].": ".$user['F_NAME']." ".$user['L_NAME']."      ";
                 }
             }
+            print "<a href='formDetail.php?filled={$form['FILLED_FORM_ID']}'>View</a>";
             print "<br><br>";
         }
     }else{
