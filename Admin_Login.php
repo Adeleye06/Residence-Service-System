@@ -13,7 +13,7 @@ if(isset($_POST['login'])){
     $password = $_POST['password'];
     if ($email && $password){
        // Using prepared statements to prevent SQL Injection
-       $sql = "SELECT c.PASSWORD, u.U_ID FROM credential c JOIN user u ON u.U_ID = c.U_ID WHERE u.email = ? AND USER_TYPE IS NOT NULL"; 
+       $sql = "SELECT c.PASSWORD, u.U_ID, u.USER_TYPE FROM credential c JOIN user u ON u.U_ID = c.U_ID WHERE u.email = ? AND USER_TYPE IS NOT NULL"; 
        $stmt = $conn->prepare($sql);
        if ($stmt) {
            $stmt->bind_param("s", $email); // 's' indicates the parameter type is a string
