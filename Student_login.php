@@ -34,6 +34,7 @@
             if($result->num_rows == 1){
                 // Generate OTP
                 $_SESSION['firstTimeOtp'] = generateOTP();
+                $_SESSION['otpTime'] = time();
                 $_SESSION['studentEmail'] = $email;
                 $student = $result->fetch_assoc();
                 $_SESSION['F_NAME'] = $student['F_NAME'];     
@@ -83,7 +84,7 @@
         }
 
         
-        if(isset($_POST['login'])){
+/*         if(isset($_POST['login'])){
             //connection
             $conn = database();
             $email = $conn->real_escape_string($_POST["email"]);
@@ -101,15 +102,25 @@
                 die('Email and otp required');
                 exit();
             }
-
-            
-            
-
-        /*  $sql = "SELECT U_ID FROM USER WHERE EMAIL='$email'";
-            $result = $conn->query($sql);  */
+        } */
+        if (isset($_POST['login'])) {
+            $conn = database();
+            $email = $conn->real_escape_string($_POST["email"]);
+            $otp = $_POST['password'];
+            $currentTime = time();
         
-
-            
+            if (isset($_SESSION['otpTime']) && $currentTime - $_SESSION['otpTime'] <= 120) { // Check if OTP is within 2-minute validity
+                if ($_SESSION['studentEmail'] == $email && $_SESSION['firstTimeOtp'] == $otp) {
+                    session_regenerate_id(); // Regenerate session ID upon successful login
+                    echo("You are logged in. Redirecting to dashboard...");
+                    header("refresh:2; url=student_dashboard.php;");
+                    exit();
+                } else {
+                    echo 'Invalid OTP or email. Please try again.';
+                }
+            } else {
+                echo 'Your OTP has expired. Please generate a new one.';
+            }
         }
     ?>
 
