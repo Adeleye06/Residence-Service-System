@@ -70,6 +70,7 @@ print "<form action='saveForm.php'>";
 
 if (isset($_GET['filled'])){
     print "<h1>Saved Form ID {$_GET['filled']}</h1>";
+    print "<input type='button' value='Print this page' onClick='window.print()'>";
     $viewingRoommateForms = false;
 
     $conn = database();
