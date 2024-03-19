@@ -7,7 +7,7 @@ function quitIfNotStudent(){
     quitIfNotLoggedIn();
 
     if(isset($_SESSION['USER_TYPE'])){
-        //header("refresh:3; url=index.php");
+        header("refresh:3; url=index.php");
         die("Admin can not access this page");
     }
 
@@ -17,7 +17,7 @@ function quitIfNotAdmin(){
     quitIfNotLoggedIn();
 
     if(!isset($_SESSION['USER_TYPE'])){
-        //header("refresh:3; url=index.php");
+        header("refresh:3; url=index.php");
         die("Students can not access this page");
     }
 
@@ -25,7 +25,7 @@ function quitIfNotAdmin(){
 
 function quitIfNotLoggedIn(){
     if(!loggedIn()){
-        //header("refresh:3; url=index.php");
+        header("refresh:3; url=index.php");
         die("You did not log in, redirecting to log in page in 3 seconds");
     }
 }

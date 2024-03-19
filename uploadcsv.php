@@ -61,6 +61,8 @@ if (isset($_POST["submit"])) {
 
     $file = $_FILES['fileToUpload']['tmp_name'];
     if ($file) {
+        $update = 0;
+        $new = 0;
         $handle = fopen($file, 'r');
         while (($data = fgetcsv($handle, 1000, ',')) !== false) {
             $HALL = mysqli_real_escape_string($conn, $data[0]);
@@ -73,12 +75,20 @@ if (isset($_POST["submit"])) {
             $PHONE = mysqli_real_escape_string($conn, $data[8]);
             $MAJOR = mysqli_real_escape_string($conn, $data[9]);
 
-            // Insert data into the 'users' table
-            $query = "INSERT INTO user (HALL, ROOM, L_NAME, F_NAME, BIRTHDATE, GENDER, EMAIL, PHONE, MAJOR) VALUES ('$HALL', '$ROOM', '$L_NAME', '$F_NAME', '$BIRTHDATE', '$GENDER', '$EMAIL', '$PHONE', '$MAJOR')";
-            mysqli_query($conn, $query);
+            $try = $conn -> query("SELECT U_ID FROM USER WHERE EMAIL = '$EMAIL'");
+            if($try -> num_rows > 0){
+                //there are already user with same email in database, alter them instead
+                $conn -> query("UPDATE USER SET HALL = '$HALL', ROOM = '$ROOM', L_NAME = '$L_NAME', F_NAME = '$F_NAME', BIRTHDATE = '$BIRTHDATE', GENDER = '$GENDER', PHONE = '$PHONE', MAJOR = '$MAJOR' WHERE U_ID = '{$try -> fetch_assoc()['U_ID']}'");
+                $update = $update + 1;
+            }else{
+                //insert new person
+                $conn -> query("INSERT INTO user (HALL, ROOM, L_NAME, F_NAME, BIRTHDATE, GENDER, EMAIL, PHONE, MAJOR) VALUES ('$HALL', '$ROOM', '$L_NAME', '$F_NAME', '$BIRTHDATE', '$GENDER', '$EMAIL', '$PHONE', '$MAJOR')");
+                $new = $new + 1;
+            }
         }
         fclose($handle);
-        echo 'CSV data imported successfully!';
+        echo 'CSV data imported successfully!<br>';
+        echo "This import added $new new users, and updated $update existing users.<br>";
     } else {
         echo 'Error uploading the CSV file.';
     }
