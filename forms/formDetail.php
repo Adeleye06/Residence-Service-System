@@ -64,6 +64,7 @@ print "<form action='saveForm.php'>";
     }
 
     print "<button type='submit'>submit</button></form>";
+    print "<a href='../student_dashboard.php'><button>cancel</button></a>";
 
 }else
 
