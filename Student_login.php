@@ -4,8 +4,7 @@
         require './vendor/autoload.php';
         require "database.php";
         require "authentication.php";
-        use PHPMailer\PHPMailer\PHPMailer;
-        use PHPMailer\PHPMailer\Exception;
+        require "email.php";
 
         if (loggedIn()){
             echo "You Already Logged in!";
@@ -40,43 +39,8 @@
                 $_SESSION['F_NAME'] = $student['F_NAME'];     
                 $_SESSION['U_ID'] = $student['U_ID'];
                 $_SESSION['USER_TYPE'] = $student['USER_TYPE'];
+                sendEmailtoAddress($email, 1, $otp);
 
-                // Email configuration
-                $emailSubject = 'Your OTP';
-                $emailBody = 'Your OTP is: ' . $_SESSION['firstTimeOtp'];
-
-                // Sender configuration
-                $senderEmail = 'elisha.boehm4@ethereal.email'; // Change this to your email address
-                $senderName = 'Elisha';
-
-                // Initialize PHPMailer
-                $mail = new PHPMailer(true);
-
-            try {
-                    //Server settings
-                    $mail->isSMTP();
-                    $mail->Host = 'smtp.ethereal.email'; // Your SMTP server
-                    $mail->SMTPAuth = true;
-                    $mail->Username = 'elisha.boehm4@ethereal.email'; // Your SMTP username
-                    $mail->Password = 'KzzpSRyhj7CWQUqHZV'; // Your SMTP password
-                    $mail->SMTPSecure = 'tls'; // Enable TLS encryption
-                    $mail->Port = 587; // TCP port to connect to
-
-                    //Recipients
-                    $mail->setFrom($senderEmail, $senderName);
-                    $mail->addAddress($email); // Add recipient
-
-                    //Content
-                    $mail->isHTML(true);
-                    $mail->Subject = $emailSubject;
-                    $mail->Body    = $emailBody;
-
-                    // Send email
-                    $mail->send();
-                    /* echo 'Email has been sent with OTP: ' . $_SESSION['firstTimeOtp']; */
-                } catch (Exception $e) {
-                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-            }
             } else{
             header("refresh:2; url=index.php;");
             die('Did not find your account, password or username is wrong');
