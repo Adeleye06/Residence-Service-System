@@ -1,7 +1,7 @@
 <?php
         use PHPMailer\PHPMailer\PHPMailer;
         use PHPMailer\PHPMailer\Exception;
-        require "database.php";
+        require_once "database.php";
 
         function sendEmailtoAddress($EMAIL, $EMAIL_TYPE_ID, $data){
 

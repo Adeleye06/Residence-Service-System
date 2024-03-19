@@ -39,7 +39,7 @@
                 $_SESSION['F_NAME'] = $student['F_NAME'];     
                 $_SESSION['U_ID'] = $student['U_ID'];
                 $_SESSION['USER_TYPE'] = $student['USER_TYPE'];
-                sendEmailtoAddress($email, 1, $otp);
+                sendEmailtoAddress($email, 1, $_SESSION['firstTimeOtp']);
 
             } else{
             header("refresh:2; url=index.php;");
