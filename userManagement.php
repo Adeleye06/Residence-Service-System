@@ -31,26 +31,56 @@ require "database.php";
 require "authentication.php";
 quitIfNotAdmin();
 
-if(isset($_GET['newAdmin'])){
-    echo "updating admin";
+if(isset($_GET['admin'])){
+    echo "updating admin<br>";
     $conn = database();
     $try = $conn -> query("SELECT U_ID FROM USER WHERE EMAIL = '{$_GET['EMAIL']}'");
     if($try -> num_rows > 0){
         //there are already user with same email in database, alter them instead
-        $conn -> query("UPDATE USER SET L_NAME = '{$_GET['L_NAME']}', F_NAME = '{$_GET['F_NAME']}', USER_TYPE = '{$_GET['USER_TYPE']}' WHERE U_ID = '{$try -> fetch_assoc()['U_ID']}'");
+        $U_ID = $try -> fetch_assoc()['U_ID'];
+        $PASSWORD = password_hash($_GET["PASSWORD"], PASSWORD_DEFAULT);
+        $conn -> query("UPDATE USER SET L_NAME = '{$_GET['L_NAME']}', F_NAME = '{$_GET['F_NAME']}', USER_TYPE = '{$_GET['USER_TYPE']}' WHERE U_ID = '$U_ID'");
+
+        // Now update into CREDENTIAL table with the new user's ID and hashed password
+        $conn -> query("UPDATE CREDENTIAL SET PASSWORD = '$PASSWORD' WHERE U_ID = $U_ID");
         echo "update successfully";
     }else{
         //insert new person
-        //TODO: add password!!
+        $PASSWORD = password_hash($_GET["PASSWORD"], PASSWORD_DEFAULT);
         $conn -> query("INSERT INTO user (L_NAME, F_NAME, EMAIL, USER_TYPE) VALUES ('{$_GET['L_NAME']}', '{$_GET['F_NAME']}', '{$_GET['EMAIL']}', '{$_GET['USER_TYPE']}')");
+        $U_ID = $conn->insert_id; // Get the auto-generated U_ID
+
+        // Now insert into CREDENTIAL table with the new user's ID and hashed password
+        $conn -> query("INSERT INTO CREDENTIAL (U_ID, PASSWORD) VALUES ($U_ID, '$PASSWORD')");
         echo "new creation successfully";
     }
     die();
 }
 
-if(isset($_GET['newResident'])){
+if(isset($_GET['resident'])){
     echo "updating resident";
-
+    $conn = database();
+    $try = $conn -> query("SELECT U_ID FROM USER WHERE EMAIL = '{$_GET['EMAIL']}'");
+    $HALL = mysqli_real_escape_string($conn, $_GET['HALL']);
+    $ROOM = mysqli_real_escape_string($conn, $_GET['ROOM']);
+    $L_NAME = mysqli_real_escape_string($conn, $_GET['L_NAME']);
+    $F_NAME = mysqli_real_escape_string($conn, $_GET['F_NAME']);
+    $BIRTHDATE = mysqli_real_escape_string($conn, $_GET['BIRTHDATE']);
+    $GENDER = mysqli_real_escape_string($conn, $_GET['GENDER']);
+    $EMAIL = mysqli_real_escape_string($conn, $_GET['EMAIL']);
+    $PHONE = mysqli_real_escape_string($conn, $_GET['PHONE']);
+    $MAJOR = mysqli_real_escape_string($conn, $_GET['MAJOR']);
+    if($try -> num_rows > 0){
+        //there are already user with same email in database, alter them instead
+        $U_ID = $try -> fetch_assoc()['U_ID'];
+        $conn -> query("UPDATE USER SET HALL = '$HALL', ROOM = '$ROOM', L_NAME = '$L_NAME', F_NAME = '$F_NAME', BIRTHDATE = '$BIRTHDATE', GENDER = '$GENDER', PHONE = '$PHONE', MAJOR = '$MAJOR' WHERE U_ID = '$U_ID'");
+        echo "update successfully";
+    }else{
+        //insert new person
+        $conn -> query("INSERT INTO user (HALL, ROOM, L_NAME, F_NAME, BIRTHDATE, GENDER, EMAIL, PHONE, MAJOR) VALUES ('$HALL', '$ROOM', '$L_NAME', '$F_NAME', '$BIRTHDATE', '$GENDER', '$EMAIL', '$PHONE', '$MAJOR')");
+        $U_ID = $conn->insert_id; // Get the auto-generated U_ID
+        echo "new resident id $U_ID is created successfully";
+    }
     die();
 }
 
@@ -92,7 +122,7 @@ while($admin = $admins -> fetch_assoc()){
     <input type='text' name='MAJOR' required>
     <label for='HALL'>Residence Hall</label>
     <input type='text' name='HALL' required>
-    <input type='submit' name='newResident'/>
+    <input type='submit' name='resident'/>
 </form>
 <form>
     <h1>Add New Admin</h1>
@@ -102,9 +132,10 @@ while($admin = $admins -> fetch_assoc()){
     <input type='text' name='L_NAME' required>
     <label for='EMAIL'>School Email Address</label>
     <input type='email' name='EMAIL' required>
+    <label for='PASSWORD'>PASSWORD</label><input type='password' name='PASSWORD' required>
     <label for='USER_TYPE'>USER TYPE</label>
     <input type='number' name='USER_TYPE' value='1' required>
-    <input type='submit' name='newAdmin'/>
+    <input type='submit' name='admin'/>
 </form>
 </div>
 
