@@ -12,7 +12,7 @@
         <img src="../assets/images/lc-logo.png" alt="Lethbridge College Logo" class="logo">
         <nav>
             <ul>
-                <li><a href="logout.php">Logout</a></li>
+                <li><a href="../logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -21,7 +21,7 @@
         <nav>
         <ul>
             <li><a href="index.php">Home</a> <span>&gt;&gt;</span></li>
-            <li><a href="student_dashboard.php">Student Dashboard</a> <span>&gt;&gt;</span></li>
+            <li><a href="../student_dashboard.php">Student Dashboard</a> <span>&gt;&gt;</span></li>
             <li><a href="getForm.php">Forms</a></li>
         </ul>
         </nav>
@@ -104,7 +104,7 @@ if ($conn->query("SELECT MAX_USER_PER_FORM FROM FORM_TYPE WHERE FORM_ID = {$_GET
 }
 
 
-print "<a href='formDetail.php?form={$_GET['id']}'>Fill A New Fom</a>";
+print "<a href='formDetail.php?form={$_GET['id']}'>Fill A New Form</a>";
 
 ?>
 
