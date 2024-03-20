@@ -1,53 +1,4 @@
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif; 
-    line-height: 1.6;
-}
-
-.site-header, .site-footer {
-    background-color: #000; 
-    color: white;
-    padding: 0.2rem 3rem;
-}
-
-.site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.site-header .logo, .site-footer .footer-logo {
-    width: 80px; 
-}
-
-.site-header nav ul {
-    list-style: none;
-    display: flex;
-}
-
-.site-header nav ul li {
-    margin-left: 20px; 
-}
-
-.site-header nav a {
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    transition: background-color 0.3s;
-}
-
-.site-header nav a:hover {
-    background-color: #555; 
-}
-
-
-.site-footer {
+@ -51,6 +51,7 @@ body {
     text-align: center;
     position: fixed;
   left: 0;
@@ -55,40 +6,13 @@ body {
   bottom: 0;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    width: 100%; 
-}
-
-.site-footer p, .site-footer nav a {
-    color: white;
-    margin-bottom: 0.5rem;
-}
-
-.site-footer nav a:hover {
-    text-decoration: underline;
-}
-
-.hero-image {
-    width: 100%; 
-    height: 400px; 
-    background-image: url('/Residence-Service-System/assets/images/Student_Hero.jpg');
-        background-size: cover; 
-        background-position: center; 
-        background-repeat: no-repeat; 
-        display: flex; 
-        align-items: center;
-        justify-content: center; 
-    }
-    
-    .ribbon {
-        width: 100%;
-        height: 30px;
-        background-image: linear-gradient(to right, #6CADDF, #6C9229);
-        display: flex;
-        align-items: center; 
+@ -88,17 +89,36 @@ body {
         padding: 0.5em 3em; 
     }
     
+    .ribbon p {
+        font-weight: bold;
+        color: white;
     .ribbon ul li {
         display: inline; 
         list-style: none; 
@@ -122,16 +46,7 @@ body {
         
     }
     
-    h1 {
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-    
-    .subtitle {
-        color: #666;
-        margin-bottom: 20px;
-    }
-    
+@ -115,36 +135,37 @@
     .tabs-container {
         display: flex;
         background-color: #e0e0e0;
