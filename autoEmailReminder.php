@@ -4,7 +4,7 @@ require "email.php";
 
 //get the all reminders
 $conn = database();
-$allReminder = $conn -> query("SELECT * FROM EMAIL_TYPE WHERE REMINDER_DATE IS NOT NULL");
+$allReminder = $conn -> query("SELECT * FROM EMAIL_TYPE WHERE REMINDER_DATE IS NOT NULL AND ENABLED IS TRUE");
 
 if ($allReminder -> num_rows == 0){
     die("no reminders set up, skip this auto email");
@@ -13,12 +13,12 @@ if ($allReminder -> num_rows == 0){
 while ($reminder = $allReminder -> fetch_assoc()){
     $FORM_ID = $reminder['FORM_ID'];
     $EMAIL_TYPE_ID = $reminder['EMAIL_TYPE_ID'];
-    $REMINDER_DATE = $reminder['REMINDER_DATE'];
-    $DUE_DATE = $conn -> query("SELECT DUE_DATE FROM FORM_TYPE WHERE FORM_ID = $FORM_ID") -> fetch_assoc()['DUE_DATE'];
+    $REMINDER_DATE = new DateTime($reminder['REMINDER_DATE']);
+    //$DUE_DATE = date_create($conn -> query("SELECT DUE_DATE FROM FORM_TYPE WHERE FORM_ID = $FORM_ID") -> fetch_assoc()['DUE_DATE']);
+    $today = new DateTime("now");
 
-    if ($DUE_DATE - time() > $REMINDER_DATE){
-        echo "DUE DATE IS $DUE_DATE, NOW IS".time().", AND REMINDER DATE IS $REMINDER_DATE";
-        //this reminder is not at the time! no need to send reminder now!
+    if ($REMINDER_DATE > $today){
+        echo "this reminder is not at the time! no need to send reminder now!";
         continue;
     }
 
@@ -42,6 +42,7 @@ while ($reminder = $allReminder -> fetch_assoc()){
 
     while ($i = $UNFILLED -> fetch_assoc()['U_ID']){
         sendEmailtoUID($i, $EMAIL_TYPE_ID, "");
+        echo "sending emails to $i!!!";
     }
 
 }

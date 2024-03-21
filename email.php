@@ -19,7 +19,6 @@
         function sendEmailtoUID($U_ID, $EMAIL_TYPE_ID, $data){
                 // Email configuration
                 $emailSubject = 'Message From Residence Service System';
-                $emailBody = 'Your OTP is: ' . $_SESSION['firstTimeOtp'];
                 $emailTemplate = database() -> query("SELECT * FROM EMAIL_TYPE WHERE EMAIL_TYPE_ID = '$EMAIL_TYPE_ID'");
                 //guard
                 if ($emailTemplate -> num_rows != 1){echo "did not find a tempalte for requested email!"; return false;};
@@ -57,7 +56,7 @@
                 //Content
                 $mail->isHTML(true);
                 $mail->Subject = $emailSubject;
-                $mail->Body    = $emailBody;
+                $mail->Body    = $emailTemplate.$data;
 
                 // Send email
                 $mail->send();
