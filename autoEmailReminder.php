@@ -39,10 +39,20 @@ while ($reminder = $allReminder -> fetch_assoc()){
 //    }
 
     $UNFILLED = $conn -> query($sql);
+    
+    echo "<h1>this is testing! No email will be send! </h1>";
+    while ($i = $UNFILLED -> fetch_assoc()){
+        //sendEmailtoUID($i['U_ID'], $EMAIL_TYPE_ID, "");
+        echo "sending emails to {$i['U_ID']}!!!<br>";
+    }
 
-    while ($i = $UNFILLED -> fetch_assoc()['U_ID']){
-        sendEmailtoUID($i, $EMAIL_TYPE_ID, "");
-        echo "sending emails to $i!!!";
+    //finish this reminder
+    $REPEAT = $conn -> query("SELECT EMAIL_TYPE.REPEAT FROM EMAIL_TYPE WHERE EMAIL_TYPE_ID = $EMAIL_TYPE_ID") -> fetch_assoc()['REPEAT'];
+    if (isset($REPEAT)){
+        $newDate = $REMINDER_DATE -> modify("+$REPEAT days") -> format("Y-m-d");
+        $conn -> query("UPDATE EMAIL_TYPE SET REMINDER_DATE = '$newDate' WHERE EMAIL_TYPE_ID = $EMAIL_TYPE_ID");
+    }else{
+        $conn -> query("UPDATE EMAIL_TYPE SET ENABLED = 0 WHERE EMAIL_TYPE_ID = $EMAIL_TYPE_ID");
     }
 
 }
