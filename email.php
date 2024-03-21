@@ -56,7 +56,7 @@
                 //Content
                 $mail->isHTML(true);
                 $mail->Subject = $emailSubject;
-                $mail->Body    = $emailTemplate.$data;
+                $mail->Body    = $emailBody;
 
                 // Send email
                 $mail->send();
