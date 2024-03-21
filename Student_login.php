@@ -1,7 +1,6 @@
     <?php
     
     session_start();
-        require './vendor/autoload.php';
         require "database.php";
         require "authentication.php";
         require "email.php";
