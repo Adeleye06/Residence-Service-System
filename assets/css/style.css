@@ -32,7 +32,6 @@ body, h1, h2, button {
     box-sizing: border-box; 
 }
 
-
 .logo {
     position: absolute;
     top: 10px; 
@@ -69,4 +68,9 @@ body, h1, h2, button {
 
 #studentLogin:hover, #adminLogin:hover {
     background-color: darkblue;
+}
+
+.or-text {
+    font-weight: bold;
+    margin: 0 10px; 
 }

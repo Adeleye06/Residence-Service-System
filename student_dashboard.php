@@ -11,9 +11,6 @@
         <img src="assets/images/lc-logo.png" alt="Lethbridge College Logo" class="logo">
         <nav>
             <ul>
-                <!-- <li><a href="profile.php">Profile</a></li> -->
-                <!-- <li><a href="saved-forms.php">My Saved Forms</a></li> -->
-                <!-- <li><a href="support.php">Contact Support</a></li> -->
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
@@ -45,11 +42,11 @@
         </div>
         <div id="studentForm" class="tab-content active-content">
             <p>Roommate Agreement Form is a form that is required for all resident, you need to fill it every semester if you have roommates. You should do it with your roommates together, so you can make rules of living together and know each other.</p>
-            <a href="forms/getForm.php?id=2">Click this to go to the form</a>
+            <button class="button" onclick="location.href='forms/getForm.php?id=2';">Fill the Form</button>
         </div>
         <div id="guestForm" class="tab-content">
         <p>Guest form is required for you to fill when you have a overnight guest you would like to host in your residence unit. We ask you to fill this so we know who is there in emeregncy situation, and we would be able to issue you guest parking in the office when you fill this</p>
-            <a href="forms/getForm.php?id=1">Click this to go to the form</a>
+        <button class="button" onclick="location.href='forms/getForm.php?id=2';">Fill the Form</button>
         </div>
     </div>
 </div>

@@ -84,13 +84,14 @@ body, h1, h2, button, input, label {
 }
 
 .login-form input[type="email"],
-.login-form input[type="password"] {
-    width: 100%;
+.login-form input[type="text"] { 
+    width: calc(100% - 25px); 
     padding: 10px;
-    margin-bottom: 15px; 
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
+
 
 .login-form .checkbox-container {
     width: 100%;
