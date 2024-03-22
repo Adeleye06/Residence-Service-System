@@ -68,8 +68,9 @@
 
         $sql = "SELECT FORM_FILLED.FILLED_FORM_ID, FORM_FILLED.TIME FROM FORM_FILLED INNER JOIN FORM_USER ON FORM_FILLED.FILLED_FORM_ID = FORM_USER.FILLED_FORM_ID WHERE FORM_USER.U_ID = {$_SESSION['U_ID']} AND FORM_FILLED.FORM_ID = {$_GET['id']}";
         $result = $conn->query($sql);
+        print "<button class='review-button'><a href='formDetail.php?form={$_GET['id']}'>Fill A New Form</a></button>";
 
-        print "<button class='review-button' onclick='document.getElementById(\"right-iframe\").src=\"formDetail.php?form={$_GET['id']}\"'>Fill A New Form</button>";
+        //print "<button class='review-button' onclick='document.getElementById(\"right-iframe\").src=\"formDetail.php?form={$_GET['id']}\"'>Fill A New Form</button>";
         print "<h3>Your Filled Forms</h3>";
         if($result->num_rows > 0){
             while ($row = $result->fetch_assoc()) {
