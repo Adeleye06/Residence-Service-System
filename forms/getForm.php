@@ -27,7 +27,14 @@
 </head>
 <body>
 <header class="site-header">
+<<<<<<< Updated upstream
     <img src="../assets/images/lc-logo.png" alt="Lethbridge College Logo" class="logo">
+=======
+<a href="index.php">
+    <img src="../assets/images/lc-logo.png" alt="Lethbridge College Logo" class="logo">
+</a>
+
+>>>>>>> Stashed changes
     <nav>
         <ul>
             <li><a href="../logout.php">Logout</a></li>
@@ -115,6 +122,7 @@
     </div>
 </div>
 <footer class="site-footer">
+<<<<<<< Updated upstream
     <img src="../assets/images/lc-logo.png" alt="Lethbridge College Logo" class="footer-logo">
     <p>3000 College Dr S, Lethbridge, Alberta, Canada, T1K 1L6</p>
     <p>1-800-572-0103</p>
@@ -123,5 +131,19 @@
     </nav>
 </footer>
 
+=======
+<a href="index.php">
+    <img src="../assets/images/lc-logo.png" alt="Lethbridge College Logo" class="logo">
+</a>
+
+
+    <p>3000 College Dr S, Lethbridge, Alberta, Canada, T1K 1L6</p>
+    <p>1-800-572-0103</p>
+    <nav>
+        <a href="contact.php">Contacts and Maps</a>
+    </nav>
+</footer>
+
+>>>>>>> Stashed changes
 </body>
 </html>

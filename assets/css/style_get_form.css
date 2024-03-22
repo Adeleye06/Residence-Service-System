@@ -7,7 +7,12 @@
 
 
 body {
+<<<<<<< Updated upstream
     font-family:  Helvetica, sans-serif;
+=======
+    font-family:  'Raleway', sans-serif;
+    font-weight: 500;
+>>>>>>> Stashed changes
 }
 
 
@@ -47,16 +52,37 @@ body {
     background-color: #555; 
 }
 
+<<<<<<< Updated upstream
 .site-footer {
     text-align: center;
 }
 
 .site-footer {
     text-align: center;
+=======
+
+
+.site-footer {
+    
+>>>>>>> Stashed changes
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+<<<<<<< Updated upstream
+=======
+.site-footer {
+    text-align: center;
+    padding: 0.5rem 3rem; 
+}
+
+.site-footer .logo {
+    width: 80px; 
+    height: auto; 
+    margin-bottom: 10px; 
+}
+
+>>>>>>> Stashed changes
 
 .site-footer p, .site-footer nav a {
     color: white;
@@ -160,4 +186,11 @@ iframe {
 
 .review-button:hover {
     background-color: #0056b3;
+<<<<<<< Updated upstream
+=======
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway-VariableFont_wght.ttf');
+>>>>>>> Stashed changes
 }
