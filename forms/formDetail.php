@@ -24,13 +24,8 @@
         <ul>
             <li><a href="index.php">Home</a> <span>&gt;&gt;</span></li>
             <li><a href="student_dashboard.php">Student Dashboard</a> <span>&gt;&gt;</span></li>
-<<<<<<< HEAD
-            <li><a href="getForm.php">Forms</a> <span>&gt;&gt;</span> </li>
-            <li><a href="formDetail.php">Form Detail</a>
-=======
             <li><a href="getForm.php?id=2">Forms</a> <span>&gt;&gt;</span> </li>
             <li><a href="formDetail.php">Form Detail</a></li>
->>>>>>> 7ab731938182371a1856fefa3f19b6c87e2ec42e
         </ul>
     </nav>
 </div>

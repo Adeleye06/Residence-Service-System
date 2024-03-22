@@ -27,11 +27,7 @@
 </head>
 <body>
 <header class="site-header">
-<<<<<<< Updated upstream
-<a href="index.php">
-=======
 <a href="/Residence-Service-System/index.php">
->>>>>>> Stashed changes
     <img src="../assets/images/lc-logo.png" alt="Lethbridge College Logo" class="logo">
 </a>
 
@@ -122,11 +118,7 @@
     </div>
 </div>
 <footer class="site-footer">
-<<<<<<< Updated upstream
-<a href="index.php">
-=======
 <a href="/Residence-Service-System/index.php">
->>>>>>> Stashed changes
     <img src="../assets/images/lc-logo.png" alt="Lethbridge College Logo" class="logo">
 </a>
 
