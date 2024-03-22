@@ -40,20 +40,27 @@ quitIfNotAdmin();
         <div class="tab active" onclick="openTab('dashboard');">Dashboard</div>
         <div class="tab" onclick="openTab('forms');">Forms</div>
         <div class="tab" onclick="openTab('reports');">Reports</div>
-        <div class="tab" onclick="openTab('residents');">Residents Management</div>
+        <div class="tab" onclick="openTab('user');">User Management</div>
+        <div class="tab" onclick="openTab('management');">Other Management</div>
     </div>
     <div id="dashboard" class="tab-content active-content">
         <!-- Dashboard Here -->
     </div>
     <div id="forms" class="tab-content">
-        <a href="forms/adminSeeAllForms.php">Check all forms in the system</a>
-        <a href="unitList.php">Check Forms Based On Unit</a>
+        <a href="forms/adminSeeAllForms.php">Check all forms in the system</a><br>
+        <a href="unitList.php">Check Forms Based On Unit</a><br>
     </div>
     <div id="reports" class="tab-content">
         <!-- Reports Here -->
     </div>
-    <div id="residents" class="tab-content">
-        <a href="uploadcsv.php">Go Upload CSV File From THD System</a>
+    <div id="user" class="tab-content">
+        <a href="uploadcsv.php">Go Upload CSV File From THD System</a><br>
+        <a href="userManagement.php">Manage Users and Admins</a><br>
+    </div>
+    <div id="management" class="tab-content">
+        <a href="reminderManagement.php">Manage Reminders</a><br>
+        <a href="loginLogView.php">View Access Logs</a><br>
+        <a href="emailLogView.php">View Email Sending Logs</a><br>
     </div>
 </div>
 
