@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="assets/css/style_admin_dashboard.css">
+    <link rel="stylesheet" href="assets/css/style_reminderman.css">
 </head>
 <body>
 <header class="site-header">
@@ -104,7 +104,7 @@
         echo "</tr>";
     }
     echo "</table>";
-    echo "<h1>End of query</h1>";
+    echo "<br><h1>End of query</h1></br>";
 
     echo "
 <h3>Set up a new automatic reminder</h3>

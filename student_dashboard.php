@@ -8,7 +8,9 @@
 </head>
 <body>
 <header class="site-header">
+<a href="/Residence-Service-System/index.php">
         <img src="assets/images/lc-logo.png" alt="Lethbridge College Logo" class="logo">
+    </a>
         <nav>
             <ul>
                 <li><a href="logout.php">Logout</a></li>
@@ -46,7 +48,7 @@
         </div>
         <div id="guestForm" class="tab-content">
         <p>Guest form is required for you to fill when you have a overnight guest you would like to host in your residence unit. We ask you to fill this so we know who is there in emeregncy situation, and we would be able to issue you guest parking in the office when you fill this</p>
-        <button class="button" onclick="location.href='forms/getForm.php?id=2';">Fill the Form</button>
+        <button class="button" onclick="location.href='forms/getForm.php?id=1';">Fill the Form</button>
         </div>
     </div>
 </div>
@@ -73,16 +75,19 @@
 </script>
 
 
-    <footer class="site-footer">
-        <img src="assets/images/lc-logo.png" alt="Lethbridge College Logo" class="footer-logo">
-        <p>3000 College Dr S, Lethbridge, Alberta, Canada, T1K 1L6</p>
-        <p>1-800-572-0103</p>
-        <nav>
-            <a href="contact.php">Contacts and Maps</a>
-        </nav>
-    </footer>
+<footer class="site-footer">
+<a href="/Residence-Service-System/index.php">
+    <img src="assets/images/lc-logo.png" alt="Lethbridge College Logo" class="logo">
+</a>
 
-   
+
+    <p>3000 College Dr S, Lethbridge, Alberta, Canada, T1K 1L6</p>
+    <p>1-800-572-0103</p>
+    <nav>
+        <a href="contact.php">Contacts and Maps</a>
+    </nav>
+</footer>
+
 </body>
-
 </html>
+

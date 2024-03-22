@@ -46,21 +46,50 @@ quitIfNotAdmin();
     <div id="dashboard" class="tab-content active-content">
         <!-- Dashboard Here -->
     </div>
+    
+    
+    
     <div id="forms" class="tab-content">
-        <a href="forms/adminSeeAllForms.php">Check all forms in the system</a><br>
-        <a href="unitList.php">Check Forms Based On Unit</a><br>
+    <button class="button" onclick="window.location.href='forms/adminSeeAllForms.php'">
+    <img src="assets/icons/online-survey.svg" alt="Online Survey Icon" style="vertical-align: middle;">
+    Check all forms in the system
+</button><br>
+<button class="button" onclick="window.location.href='unitList.php'">
+    <img src="assets/icons/online-survey1.svg" alt="Online Survey Icon" style="vertical-align: middle;">
+    Check forms based on unit
+</button><br>
+        
     </div>
     <div id="reports" class="tab-content">
         <!-- Reports Here -->
     </div>
     <div id="user" class="tab-content">
-        <a href="uploadcsv.php">Go Upload CSV File From THD System</a><br>
-        <a href="userManagement.php">Manage Users and Admins</a><br>
+    <button class="button" onclick="window.location.href='uploadcsv.php'">
+    <img src="assets/icons/file-upload.svg" alt="Online Survey Icon" style="vertical-align: middle;">
+    Go Upload CSV File From THD System
+</button><br>
+<button class="button" onclick="window.location.href='userManagement.php'">
+    <img src="assets/icons/customer-care.svg" alt="Online Survey Icon" style="vertical-align: middle;">
+    Manage Users and Admins
+</button><br>
+        
     </div>
     <div id="management" class="tab-content">
-        <a href="reminderManagement.php">Manage Reminders</a><br>
-        <a href="loginLogView.php">View Access Logs</a><br>
-        <a href="emailLogView.php">View Email Sending Logs</a><br>
+    <button class="button" onclick="window.location.href='reminderManagement.php'">
+    <img src="assets/icons/alert.svg" alt="Online Survey Icon" style="vertical-align: middle;">
+    Manage Reminder
+</button><br>
+
+<button class="button" onclick="window.location.href='loginLogView.php'">
+    <img src="assets/icons/data-encryption.svg" alt="Online Survey Icon" style="vertical-align: middle;">
+    View Access Logs
+</button><br>
+        
+<button class="button" onclick="window.location.href='emailLogView.php'">
+    <img src="assets/icons/email.svg" alt="Online Survey Icon" style="vertical-align: middle;">
+    View Email Sending Logs
+</button><br>
+        
     </div>
 </div>
 
