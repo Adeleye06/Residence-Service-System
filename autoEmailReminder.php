@@ -40,9 +40,9 @@ while ($reminder = $allReminder -> fetch_assoc()){
 
     $UNFILLED = $conn -> query($sql);
     
-    echo "<h1>this is testing! No email will be send! </h1>";
+    //echo "<h1>this is testing! No email will be send! </h1>";
     while ($i = $UNFILLED -> fetch_assoc()){
-        //sendEmailtoUID($i['U_ID'], $EMAIL_TYPE_ID, "");
+        sendEmailtoUID($i['U_ID'], $EMAIL_TYPE_ID, "");
         echo "sending emails to {$i['U_ID']}!!!<br>";
     }
 
