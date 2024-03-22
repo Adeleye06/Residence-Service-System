@@ -45,27 +45,6 @@
             die('Did not find your account, password or username is wrong');
             }
         }
-
-        
-/*         if(isset($_POST['login'])){
-            //connection
-            $conn = database();
-            $email = $conn->real_escape_string($_POST["email"]);
-            $otp = $_POST['password'];
-
-            if($otp){
-                if($_SESSION['studentEmail'] == $email && $_SESSION['firstTimeOtp'] == $otp){
-                    echo("you logged in going to dashboard now");
-                    header("refresh:2; url=student_dashboard.php;");
-                    exit();
-                }
-                
-            } else{
-                header("refresh:2; url=Student_login.php;");
-                die('Email and otp required');
-                exit();
-            }
-        } */
         if (isset($_POST['login'])) {
             $conn = database();
             $email = $conn->real_escape_string($_POST["email"]);
@@ -76,6 +55,7 @@
                 if ($_SESSION['studentEmail'] == $email && $_SESSION['firstTimeOtp'] == $otp) {
                     session_regenerate_id(); // Regenerate session ID upon successful login
                     echo("You are logged in. Redirecting to dashboard...");
+                    $conn -> query("INSERT INTO ACCESS_LOG (U_ID, TIME) VALUES ({$_SESSION['U_ID']}, NOW())");
                     header("refresh:2; url=student_dashboard.php;");
                     exit();
                 } else {

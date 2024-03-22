@@ -26,6 +26,7 @@ if(isset($_POST['login'])){
                    // Password is correct, redirect to admin dashboard
                     $_SESSION['U_ID'] = $row['U_ID'];
                     $_SESSION['USER_TYPE'] = $row['USER_TYPE'];
+                   $conn -> query("INSERT INTO ACCESS_LOG (U_ID, TIME) VALUES ({$row['U_ID']}, NOW())");
                    header("Location: admin_dashboard.php");
                    exit();
                } else {
