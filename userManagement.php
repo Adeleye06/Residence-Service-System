@@ -24,7 +24,7 @@
 </div>
 
 
-<div class="content-section">    
+<div class="content-section">
 <?php
 session_start();
 require "database.php";
@@ -87,26 +87,50 @@ if(isset($_GET['resident'])){
 $conn = database();
 $students = $conn -> query("SELECT * FROM USER WHERE USER_TYPE IS NULL");
 $admins = $conn -> query("SELECT * FROM USER WHERE USER_TYPE IS NOT NULL");
+
+echo "<h1>User Management</h1>";
+echo "<h2>Residents</h2>";
+echo "<table>";
+echo "<tr>
+<th>User ID</th>
+<th>Room</th>
+<th>Hall</th>
+<th>First Name</th>
+<th>Last Name</th>
+<th>Major</th>
+<th>Email</th>
+</tr>";
 while($student = $students -> fetch_assoc()){
-    echo $student['U_ID'];
-    echo $student['ROOM'];
-    echo $student['HALL'];
-    echo $student['F_NAME'];
-    echo $student['L_NAME'];
-    echo $student['MAJOR'];
-    echo $student['EMAIL'];
-    echo "<br>";
+    echo "<tr>";
+    echo "<td>".$student['U_ID']."</td>";
+    echo "<td>".$student['ROOM']."</td>";
+    echo "<td>".$student['HALL']."</td>";
+    echo "<td>".$student['F_NAME']."</td>";
+    echo "<td>".$student['L_NAME']."</td>";
+    echo "<td>".$student['MAJOR']."</td>";
+    echo "<td>".$student['EMAIL']."</td>";
+    echo "</tr>";
 }
-
+echo "</table>";
+echo "<table>";
+echo "<h2>Admins</h2>";
+echo "<tr>
+<th>User ID</th>
+<th>First Name</th>
+<th>Last Name</th>
+<th>Email</th>
+<th>User Type</th>
+</tr>";
 while($admin = $admins -> fetch_assoc()){
-    echo $admin['U_ID'];
-    echo $admin['F_NAME'];
-    echo $admin['L_NAME'];
-    echo $admin['EMAIL'];
-    echo $admin['USER_TYPE'];
-    echo "<br>";
+    echo "<tr>";
+    echo "<td>".$admin['U_ID']."</td>";
+    echo "<td>".$admin['F_NAME']."</td>";
+    echo "<td>".$admin['L_NAME']."</td>";
+    echo "<td>".$admin['EMAIL']."</td>";
+    echo "<td>".$admin['USER_TYPE']."</td>";
+    echo "</tr>";
 }
-
+echo "</table>";
 ?>
 <form>
     <h1>Add New Resident</h1>
