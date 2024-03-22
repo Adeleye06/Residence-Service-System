@@ -7,7 +7,9 @@
 
 
 body {
-    font-family:  Helvetica, sans-serif;
+    font-family:  'Raleway', sans-serif;
+    font-weight: 500;
+
 }
 
 
@@ -47,16 +49,27 @@ body {
     background-color: #555; 
 }
 
-.site-footer {
-    text-align: center;
-}
+
+
 
 .site-footer {
-    text-align: center;
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+.site-footer {
+    text-align: center;
+    padding: 0.5rem 3rem; 
+}
+
+.site-footer .logo {
+    width: 80px; 
+    height: auto; 
+    margin-bottom: 10px; 
+}
+
+
 
 .site-footer p, .site-footer nav a {
     color: white;
@@ -160,4 +173,9 @@ iframe {
 
 .review-button:hover {
     background-color: #0056b3;
+
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway-VariableFont_wght.ttf');
 }

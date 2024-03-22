@@ -263,3 +263,11 @@ a.button {
 a.button:hover {
     background-color: #0056b3;
 }
+<<<<<<< Updated upstream
+=======
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway-VariableFont_wght.ttf');
+}
+>>>>>>> Stashed changes

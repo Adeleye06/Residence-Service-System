@@ -90,11 +90,15 @@ body, h1, h2, button, input, label {
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> Stashed changes
 }
 >>>>>>> b6456f24026db295e7a34ce3d5bd7bc2b436d96c
 }
+
 
 
 .login-form .checkbox-container {

@@ -29,26 +29,40 @@
     require "../database.php";
     require "../authentication.php";
     quitIfNotAdmin();
+    echo "<h1>See all forms</h1>";
+    echo "<h2>This page lists all the submitted forms in the system avaliable for you to view</h2>";
         $conn = database();
 
-        $forms = $conn->query("SELECT * FROM FORM_FILLED");
+        $forms = $conn->query("SELECT * FROM FORM_FILLED JOIN FORM_TYPE ON FORM_FILLED.FORM_ID = FORM_TYPE.FORM_ID ORDER BY FORM_FILLED.TIME");
 
         if ($forms -> num_rows > 0){
+            echo "<table>";
+            echo "<tr>
+<th>Form ID</th>
+<th>Form Type</th>
+<th>Submitted Time</th>
+<th>Residents</th>
+<th>Options</th>
+</tr>";
             while($form = $forms -> fetch_assoc()){
-                print "FORM TYPE IS: ".$form['FORM_ID'];
-                print "SUBMITTED TIME IS: ".$form['TIME'];
-                print "ID FOR THIS FILLED FORM IS".$form['FILLED_FORM_ID'];
+                echo "<tr>";
+                print "<td>".$form['FILLED_FORM_ID']."</td>";
+                print "<td>".$form['FORM_NAME']."</td>";
+                print "<td>".$form['TIME']."</td>";
                 $agreed = $conn -> query("SELECT F_NAME, L_NAME, ROOM FROM FORM_USER INNER JOIN USER ON FORM_USER.U_ID = USER.U_ID WHERE FORM_USER.FILLED_FORM_ID = {$form['FILLED_FORM_ID']}");
                 if ($agreed -> num_rows == 0){
-                print "no one belongs to this form, system did not save this form properly!";
+                echo "<td>"."EMPTY!"."</td>";
             }else{
+                    echo "<td>";
                 while ($user = $agreed->fetch_assoc()){
-                    print $user['ROOM'].": ".$user['F_NAME']." ".$user['L_NAME']."      ";
+                   echo "(".$user['ROOM'].") ".$user['F_NAME']." ".$user['L_NAME']."<br>";
                 }
+                echo "</td>";
             }
-            print "<a href='formDetail.php?filled={$form['FILLED_FORM_ID']}'>View</a>";
-            print "<br><br>";
+            print "<td><a href='formDetail.php?filled={$form['FILLED_FORM_ID']}'>View</a></td>";
+            print "</tr>";
         }
+        echo "</table>";
     }else{
         print "no saved forms for this one";
     }

@@ -27,7 +27,10 @@
 </head>
 <body>
 <header class="site-header">
+<a href="index.php">
     <img src="../assets/images/lc-logo.png" alt="Lethbridge College Logo" class="logo">
+</a>
+
     <nav>
         <ul>
             <li><a href="../logout.php">Logout</a></li>
@@ -115,7 +118,11 @@
     </div>
 </div>
 <footer class="site-footer">
-    <img src="../assets/images/lc-logo.png" alt="Lethbridge College Logo" class="footer-logo">
+<a href="index.php">
+    <img src="../assets/images/lc-logo.png" alt="Lethbridge College Logo" class="logo">
+</a>
+
+
     <p>3000 College Dr S, Lethbridge, Alberta, Canada, T1K 1L6</p>
     <p>1-800-572-0103</p>
     <nav>
