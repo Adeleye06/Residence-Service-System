@@ -59,8 +59,10 @@ foreach ($_GET as $i => $value) {
         continue;//dont save the form id as answer!
     }
 
+    $value = $conn -> real_escape_string($value);
+
     $sql = "INSERT INTO FORM_ANSWER (FILLED_FORM_ID, Q_ID, Q_ANSWER) VALUES ($newFormID, $i, '$value');";
-    print "saving the data with ".$sql."<br><br>";
+    //print "saving the data with ".$sql."<br><br>";
     $conn->query($sql);
 
 }
