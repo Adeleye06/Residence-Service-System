@@ -4,6 +4,7 @@ require "database.php";
 require "authentication.php";
 if (loggedIn()){
     echo "You Already Logged in!";
+    header("location: admin_dashboard.php");
 }
 if(isset($_POST['login'])){
     //connection

@@ -7,7 +7,7 @@
 
         if (loggedIn()){
             echo "You Already Logged in!";
-            header("refresh:2; url=student_dashboard.php;");
+            header("location: student_dashboard.php");
         }
 
         if(isset($_POST['generateOTP'])){
