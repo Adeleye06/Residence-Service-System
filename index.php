@@ -18,8 +18,10 @@
                 <button id="studentLogin" onclick="window.location.href='Student_login.php';">Student</button>
                 <span class="or-text">OR</span>
                 <button id="adminLogin" onclick="window.location.href='Admin_login.php';">Admin</button>
+                <p>Copyright 2024, Bit Matrix <br> Lethbridge College - Computer Information Technology Program <br> Lethbridge College Residence Life</p>
             </div>
         </div>
     </div>
 </body>
+
 </html>
