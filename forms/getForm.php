@@ -27,7 +27,10 @@
 </head>
 <body>
 <header class="site-header">
+<a href="/Residence-Service-System/index.php">
     <img src="../assets/images/lc-logo.png" alt="Lethbridge College Logo" class="logo">
+</a>
+
     <nav>
         <ul>
             <li><a href="../logout.php">Logout</a></li>
@@ -63,13 +66,16 @@
 
         $conn = database();
 
-        $sql = "SELECT FORM_FILLED.FILLED_FORM_ID FROM FORM_FILLED INNER JOIN FORM_USER ON FORM_FILLED.FILLED_FORM_ID = FORM_USER.FILLED_FORM_ID WHERE FORM_USER.U_ID = {$_SESSION['U_ID']} AND FORM_FILLED.FORM_ID = {$_GET['id']}";
+        $sql = "SELECT FORM_FILLED.FILLED_FORM_ID, FORM_FILLED.TIME FROM FORM_FILLED INNER JOIN FORM_USER ON FORM_FILLED.FILLED_FORM_ID = FORM_USER.FILLED_FORM_ID WHERE FORM_USER.U_ID = {$_SESSION['U_ID']} AND FORM_FILLED.FORM_ID = {$_GET['id']}";
         $result = $conn->query($sql);
+        print "<button class='review-button'><a href='formDetail.php?form={$_GET['id']}'>Fill A New Form</a></button>";
 
+        //print "<button class='review-button' onclick='document.getElementById(\"right-iframe\").src=\"formDetail.php?form={$_GET['id']}\"'>Fill A New Form</button>";
+        print "<h3>Your Filled Forms</h3>";
         if($result->num_rows > 0){
             while ($row = $result->fetch_assoc()) {
-                print "<p>Your Filled Form ";
-                print $row['FILLED_FORM_ID'];
+                print "<p>Form Filled On ";
+                print $row['TIME'];
                 print ": <button class='review-button' onclick='document.getElementById(\"right-iframe\").src=\"formDetail.php?filled={$row['FILLED_FORM_ID']}\"'>Review This Form</button></p>";
                 print "<br>";
             }
@@ -80,23 +86,23 @@
         if ($conn->query("SELECT MAX_USER_PER_FORM FROM FORM_TYPE WHERE FORM_ID = {$_GET['id']}")->fetch_assoc()['MAX_USER_PER_FORM'] > 1){ 
             print "<br>It appears this form is a collaborative form that you can fill with your roommates. <br>";
 
-            $roommates = $conn->query("SELECT U_ID FROM USER WHERE HALL = (SELECT HALL FROM USER WHERE U_ID = {$_SESSION['U_ID']}) AND (SUBSTRING(ROOM,1,2) = (SELECT SUBSTRING(ROOM,1,2) FROM USER WHERE U_ID = {$_SESSION['U_ID']}) OR SUBSTRING(ROOM,1,4) = (SELECT SUBSTRING(ROOM,1,4) FROM USER WHERE U_ID = {$_SESSION['U_ID']}))");
+            $roommates = $conn->query("SELECT U_ID, F_NAME FROM USER WHERE HALL = (SELECT HALL FROM USER WHERE U_ID = {$_SESSION['U_ID']}) AND (SUBSTRING(ROOM,1,2) = (SELECT SUBSTRING(ROOM,1,2) FROM USER WHERE U_ID = {$_SESSION['U_ID']}) OR SUBSTRING(ROOM,1,4) = (SELECT SUBSTRING(ROOM,1,4) FROM USER WHERE U_ID = {$_SESSION['U_ID']}))");
 
             if($roommates->num_rows > 1){
                 while ($roommate = $roommates->fetch_assoc()) {
                     if ($roommate['U_ID'] == $_SESSION['U_ID']){
                         continue;
                     }
-                    print "It looks like you are roommates with User ID ";
-                    print $roommate['U_ID'].": <br>";
+                    print "Your Roommate ";
+                    print $roommate['F_NAME']."'s Forms: <br>";
 
-                    $rforms = $conn->query("SELECT FORM_FILLED.FILLED_FORM_ID FROM FORM_FILLED INNER JOIN FORM_USER ON FORM_FILLED.FILLED_FORM_ID = FORM_USER.FILLED_FORM_ID WHERE FORM_USER.U_ID = {$roommate['U_ID']} AND FORM_FILLED.FORM_ID = {$_GET['id']}");
+                    $rforms = $conn->query("SELECT FORM_FILLED.FILLED_FORM_ID, FORM_FILLED.TIME FROM FORM_FILLED INNER JOIN FORM_USER ON FORM_FILLED.FILLED_FORM_ID = FORM_USER.FILLED_FORM_ID WHERE FORM_USER.U_ID = {$roommate['U_ID']} AND FORM_FILLED.FORM_ID = {$_GET['id']}");
                     
                     if($rforms->num_rows > 0){
                         while ($row = $rforms->fetch_assoc()) {
-                            print "<p>Your roommate {$roommate['U_ID']} have already filled the form ";
-                            print $row['FILLED_FORM_ID'];
-                            print ", click <button class='review-button' onclick='document.getElementById(\"right-iframe\").src=\"formDetail.php?filled={$row['FILLED_FORM_ID']}\"'>here</button> to review that form. </p>";
+                            print "<p>Form Submitted On ";
+                            print $row['TIME'];
+                            print " <button class='review-button' onclick='document.getElementById(\"right-iframe\").src=\"formDetail.php?filled={$row['FILLED_FORM_ID']}\"'>Review this Form</button></p>";
                         }
                     } else {
                         print "Your roommate {$roommate['U_ID']} have not filled the form yet.";
@@ -107,7 +113,7 @@
                 print "The system's record does not show you have any other roommate, so we won't show any roommate filled form here. ";
             }
         }
-        print "<button class='review-button' onclick='document.getElementById(\"right-iframe\").src=\"formDetail.php?form={$_GET['id']}\"'>Fill A New Form</button>";
+        
     ?>
     </div>
     <div class="right-column">
@@ -115,7 +121,11 @@
     </div>
 </div>
 <footer class="site-footer">
-    <img src="../assets/images/lc-logo.png" alt="Lethbridge College Logo" class="footer-logo">
+<a href="/Residence-Service-System/index.php">
+    <img src="../assets/images/lc-logo.png" alt="Lethbridge College Logo" class="logo">
+</a>
+
+
     <p>3000 College Dr S, Lethbridge, Alberta, Canada, T1K 1L6</p>
     <p>1-800-572-0103</p>
     <nav>

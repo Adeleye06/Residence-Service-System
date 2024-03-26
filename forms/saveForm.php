@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
-    <link rel="stylesheet" href="../assets/css/style_student_dashboard.css"> 
+    <link rel="stylesheet" href="../assets/css/style_forms.css"> 
 </head>
 <body>
 <header class="site-header">
@@ -59,8 +59,10 @@ foreach ($_GET as $i => $value) {
         continue;//dont save the form id as answer!
     }
 
+    $value = $conn -> real_escape_string($value);
+
     $sql = "INSERT INTO FORM_ANSWER (FILLED_FORM_ID, Q_ID, Q_ANSWER) VALUES ($newFormID, $i, '$value');";
-    print "saving the data with ".$sql."<br><br>";
+    //print "saving the data with ".$sql."<br><br>";
     $conn->query($sql);
 
 }

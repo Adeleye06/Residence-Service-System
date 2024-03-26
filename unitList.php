@@ -2,29 +2,56 @@
 require "authentication.php";
 quitIfNotAdmin();
 ?>
-<html>
-<head>
-<script>
-function showUnit(unit) {
 
-  var xmlhttp=new XMLHttpRequest();
-  xmlhttp.onreadystatechange=function() {
-    if (this.readyState==4 && this.status==200) {
-      document.getElementById("results").innerHTML=this.responseText;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit List</title>
+    <link rel="stylesheet" href="assets/css/style_unit_list.css"> 
+
+    <script>
+    function showUnit(unit) {
+
+        var xmlhttp=new XMLHttpRequest();
+        xmlhttp.onreadystatechange=function() {
+            if (this.readyState==4 && this.status==200) {
+                document.getElementById("results").innerHTML=this.responseText;
+            }
+        }
+        
+        xmlhttp.open("GET","getUnitDetail.php?unit="+unit,true);
+        xmlhttp.send();
     }
-  }
-  
-  xmlhttp.open("GET","getUnitDetail.php?unit="+unit,true);
-  xmlhttp.send();
-}
-</script>
+    </script>
 </head>
 <body>
-<h1>Unit list</h1>
-hover over letter to show Unit Detail <br/><br/>
+    <header class="site-header">
+        <img src="assets/images/lc-logo.png" alt="Lethbridge College Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="ribbon">
+        <p>Home &gt; Admin Dashboard &gt; Unit List </p>
+    </div>
 
-<div style='float:left; width:5%;'>
-<table>
+    <div class="content-section">
+        <h1>Unit list</h1>
+        <p>Hover over a letter to show Unit Detail</p>
+        <br/>
+        <br/>
+
+        <div class="units-container">
+            <table>
+                <tr>
+                    <td class="letter" id="letter_A">A</td>
+                </tr>
 <!-- Cullen Four Bedroom Unit -->
 <tr><td><div onmouseover='showUnit("A101")'>A101</div></td></tr>
 <tr><td><div onmouseover='showUnit("A102")'>A102</div></td></tr>
@@ -32,28 +59,52 @@ hover over letter to show Unit Detail <br/><br/>
 <tr><td><div onmouseover='showUnit("A104")'>A104</div></td></tr>
 <tr><td><div onmouseover='showUnit("A105")'>A105</div></td></tr>
 <tr><td><div onmouseover='showUnit("A106")'>A106</div></td></tr>
+
+<tr>
+    <td class="letter" id="letter_B">B</td>
+</tr>
 <tr><td><div onmouseover='showUnit("B107")'>B107</div></td></tr>
 <tr><td><div onmouseover='showUnit("B108")'>B108</div></td></tr>
 <tr><td><div onmouseover='showUnit("B109")'>B109</div></td></tr>
 <tr><td><div onmouseover='showUnit("B110")'>B110</div></td></tr>
+<tr>
+    <td class="letter" id="letter_C">C</td>
+</tr>
 <tr><td><div onmouseover='showUnit("C111")'>C111</div></td></tr>
 <tr><td><div onmouseover='showUnit("C112")'>C112</div></td></tr>
 <tr><td><div onmouseover='showUnit("C113")'>C113</div></td></tr>
 <tr><td><div onmouseover='showUnit("C114")'>C114</div></td></tr>
+
+<tr>
+    <td class="letter" id="letter_D">D</td>
+</tr>
 <tr><td><div onmouseover='showUnit("D115")'>D115</div></td></tr>
 <tr><td><div onmouseover='showUnit("D116")'>D116</div></td></tr>
 <tr><td><div onmouseover='showUnit("D117")'>D117</div></td></tr>
 <tr><td><div onmouseover='showUnit("D118")'>D118</div></td></tr>
+
+<tr>
+    <td class="letter" id="letter_E">E</td>
+</tr>
 <tr><td><div onmouseover='showUnit("E119")'>E119</div></td></tr>
 <tr><td><div onmouseover='showUnit("E120")'>E120</div></td></tr>
 <tr><td><div onmouseover='showUnit("E121")'>E121</div></td></tr>
 <tr><td><div onmouseover='showUnit("E122")'>E122</div></td></tr>
+<tr>
+    <td class="letter" id="letter_G">G</td>
+</tr>
 <tr><td><div onmouseover='showUnit("G127")'>G127</div></td></tr>
+<tr>
+    <td class="letter" id="letter_I">I</td>
+</tr>
 <tr><td><div onmouseover='showUnit("I131")'>I131</div></td></tr>
 <tr><td><div onmouseover='showUnit("I132")'>I132</div></td></tr>
 <tr><td><div onmouseover='showUnit("I133")'>I133</div></td></tr>
 <tr><td><div onmouseover='showUnit("I134")'>I134</div></td></tr>
 <!-- <p>Cullen Two Bedroom Unit</p> -->
+<tr>
+    <td class="letter" id="letter_F">F</td>
+</tr>
 <tr><td><div onmouseover='showUnit("F141")'>F141</div></td></tr>
 <tr><td><div onmouseover='showUnit("F142")'>F142</div></td></tr>
 <tr><td><div onmouseover='showUnit("F143")'>F143</div></td></tr>
@@ -70,6 +121,9 @@ hover over letter to show Unit Detail <br/><br/>
 <tr><td><div onmouseover='showUnit("F246")'>F246</div></td></tr>
 <tr><td><div onmouseover='showUnit("F247")'>F247</div></td></tr>
 <tr><td><div onmouseover='showUnit("F248")'>F248</div></td></tr>
+<tr>
+    <td class="letter" id="letter_J">J</td>
+</tr>
 <tr><td><div onmouseover='showUnit("J171")'>J171</div></td></tr>
 <tr><td><div onmouseover='showUnit("J172")'>J172</div></td></tr>
 <tr><td><div onmouseover='showUnit("J173")'>J173</div></td></tr>
@@ -86,6 +140,9 @@ hover over letter to show Unit Detail <br/><br/>
 <tr><td><div onmouseover='showUnit("J276")'>J276</div></td></tr>
 <tr><td><div onmouseover='showUnit("J277")'>J277</div></td></tr>
 <tr><td><div onmouseover='showUnit("J278")'>J278</div></td></tr>
+<tr>
+    <td class="letter" id="letter_M">M</td>
+</tr>
 <tr><td><div onmouseover='showUnit("M156")'>M156</div></td></tr>
 <tr><td><div onmouseover='showUnit("M251")'>M251</div></td></tr>
 <tr><td><div onmouseover='showUnit("M252")'>M252</div></td></tr>
@@ -94,59 +151,98 @@ hover over letter to show Unit Detail <br/><br/>
 <tr><td><div onmouseover='showUnit("M255")'>M255</div></td></tr>
 <tr><td><div onmouseover='showUnit("M256")'>M256</div></td></tr>
 <!-- <p>30th Ave Residence</p> -->
+<tr>
+    <td class="letter" id="letter_N">N</td>
+</tr>
 <tr><td><div onmouseover='showUnit("N1")'>N1</div></td></tr>
 <tr><td><div onmouseover='showUnit("N2")'>N2</div></td></tr>
 <tr><td><div onmouseover='showUnit("N3")'>N3</div></td></tr>
 <tr><td><div onmouseover='showUnit("N4")'>N4</div></td></tr>
 <tr><td><div onmouseover='showUnit("N5")'>N5</div></td></tr>
 <tr><td><div onmouseover='showUnit("N6")'>N6</div></td></tr>
+<tr>
+    <td class="letter" id="letter_O">O</td>
+</tr>
 <tr><td><div onmouseover='showUnit("O1")'>O1</div></td></tr>
 <tr><td><div onmouseover='showUnit("O2")'>O2</div></td></tr>
 <tr><td><div onmouseover='showUnit("O3")'>O3</div></td></tr>
 <tr><td><div onmouseover='showUnit("O4")'>O4</div></td></tr>
+<tr>
+    <td class="letter" id="letter_P">P</td>
+</tr>
 <tr><td><div onmouseover='showUnit("P1")'>P1</div></td></tr>
 <tr><td><div onmouseover='showUnit("P2")'>P2</div></td></tr>
 <tr><td><div onmouseover='showUnit("P3")'>P3</div></td></tr>
 <tr><td><div onmouseover='showUnit("P4")'>P4</div></td></tr>
+<tr>
+    <td class="letter" id="letter_Q">Q</td>
+</tr>
 <tr><td><div onmouseover='showUnit("Q1")'>Q1</div></td></tr>
 <tr><td><div onmouseover='showUnit("Q2")'>Q2</div></td></tr>
 <tr><td><div onmouseover='showUnit("Q3")'>Q3</div></td></tr>
 <tr><td><div onmouseover='showUnit("Q4")'>Q4</div></td></tr>
+<tr>
+    <td class="letter" id="letter_R">R</td>
+</tr>
 <tr><td><div onmouseover='showUnit("R1")'>R1</div></td></tr>
 <tr><td><div onmouseover='showUnit("R2")'>R2</div></td></tr>
 <tr><td><div onmouseover='showUnit("R3")'>R3</div></td></tr>
 <tr><td><div onmouseover='showUnit("R4")'>R4</div></td></tr>
+<tr>
+    <td class="letter" id="letter_S">S</td>
+</tr>
 <tr><td><div onmouseover='showUnit("S1")'>S1</div></td></tr>
 <tr><td><div onmouseover='showUnit("S2")'>S2</div></td></tr>
 <tr><td><div onmouseover='showUnit("S3")'>S3</div></td></tr>
 <tr><td><div onmouseover='showUnit("S4")'>S4</div></td></tr>
+<tr>
+    <td class="letter" id="letter_T">T</td>
+</tr>
 <tr><td><div onmouseover='showUnit("T1")'>T1</div></td></tr>
 <tr><td><div onmouseover='showUnit("T2")'>T2</div></td></tr>
 <tr><td><div onmouseover='showUnit("T3")'>T3</div></td></tr>
 <tr><td><div onmouseover='showUnit("T4")'>T4</div></td></tr>
+<tr>
+    <td class="letter" id="letter_U">U</td>
+</tr>
 <tr><td><div onmouseover='showUnit("U1")'>U1</div></td></tr>
 <tr><td><div onmouseover='showUnit("U2")'>U2</div></td></tr>
 <tr><td><div onmouseover='showUnit("U3")'>U3</div></td></tr>
 <tr><td><div onmouseover='showUnit("U4")'>U4</div></td></tr>
+<tr>
+    <td class="letter" id="letter_V">V</td>
+</tr>
 <tr><td><div onmouseover='showUnit("V1")'>V1</div></td></tr>
 <tr><td><div onmouseover='showUnit("V2")'>V2</div></td></tr>
 <tr><td><div onmouseover='showUnit("V3")'>V3</div></td></tr>
 <tr><td><div onmouseover='showUnit("V4")'>V4</div></td></tr>
+<tr>
+    <td class="letter" id="letter_W">W</td>
+</tr>
 <tr><td><div onmouseover='showUnit("W1")'>W1</div></td></tr>
 <tr><td><div onmouseover='showUnit("W2")'>W2</div></td></tr>
 <tr><td><div onmouseover='showUnit("W3")'>W3</div></td></tr>
 <tr><td><div onmouseover='showUnit("W4")'>W4</div></td></tr>
 <tr><td><div onmouseover='showUnit("W5")'>W5</div></td></tr>
 <tr><td><div onmouseover='showUnit("W6")'>W6</div></td></tr>
+<tr>
+    <td class="letter" id="letter_X">X</td>
+</tr>
 <tr><td><div onmouseover='showUnit("X1")'>X1</div></td></tr>
 <tr><td><div onmouseover='showUnit("X2")'>X2</div></td></tr>
 <tr><td><div onmouseover='showUnit("X3")'>X3</div></td></tr>
 <tr><td><div onmouseover='showUnit("X4")'>X4</div></td></tr>
+<tr>
+    <td class="letter" id="letter_Y">Y</td>
+</tr>
 <tr><td><div onmouseover='showUnit("Y1")'>Y1</div></td></tr>
 <tr><td><div onmouseover='showUnit("Y2")'>Y2</div></td></tr>
 <tr><td><div onmouseover='showUnit("Y3")'>Y3</div></td></tr>
 <tr><td><div onmouseover='showUnit("Y4")'>Y4</div></td></tr>
 <!-- <p>Kodiak House</p> -->
+<tr>
+    <td class="letter" id="letter_K">K</td>
+</tr>
 
 <tr><td><div onmouseover='showUnit("KH1010")'>KH1010</div></td></tr>
 <tr><td><div onmouseover='showUnit("KH1012")'>KH1012</div></td></tr>
@@ -258,6 +354,16 @@ hover over letter to show Unit Detail <br/><br/>
 <tr><td><div onmouseover='showUnit("KH5029")'>KH5029</div></td></tr>
 <tr><td><div onmouseover='showUnit("KH5030")'>KH5030</div></td></tr>
 </table>
+
 </div><div style='float:right; align:left; width:95%;' id='results' >here is the list</div>
+<footer class="site-footer">
+            <img src="assets/images/lc-logo.png" alt="Lethbridge College Logo" class="logo">
+            <p>3000 College Dr S, Lethbridge, Alberta, Canada, T1K 1L6</p>
+            <p>1-800-572-0103</p>
+            <nav>
+                <a href="contact.php">Contacts and Maps</a>
+            </nav>
+        </footer>
+
 </body>
 </html>

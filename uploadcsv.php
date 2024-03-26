@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="assets/css/style_admin_dashboard.css"> 
+    <link rel="stylesheet" href="assets/css/style_uploadcsv.css"> 
 </head>
 <body>
 <header class="site-header">
@@ -101,6 +101,7 @@ print "<!DOCTYPE html>
 <form action='uploadcsv.php' method='post' enctype='multipart/form-data'>
 <h1>Welcome to csv upload page<br></h1>
   <h5>Select csv file to upload:<br></h5>
+  
   <input type='file' name='fileToUpload' id='fileToUpload'> <br><br>
   <input type='submit' value='Upload File' name='submit'> <br><br>
 </form>

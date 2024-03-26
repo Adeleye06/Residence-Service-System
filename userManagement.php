@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="assets/css/style_admin_dashboard.css"> 
+    <link rel="stylesheet" href="assets/css/style_userman.css"> 
 </head>
 <body>
 <header class="site-header">
@@ -113,7 +113,7 @@ while($student = $students -> fetch_assoc()){
 }
 echo "</table>";
 echo "<table>";
-echo "<h2>Admins</h2>";
+echo "<br><h2>Admins</h2></br>";
 echo "<tr>
 <th>User ID</th>
 <th>First Name</th>
@@ -132,7 +132,7 @@ while($admin = $admins -> fetch_assoc()){
 }
 echo "</table>";
 ?>
-<form>
+<form><br></br>
     <h1>Add New Resident</h1>
     <label for='F_NAME'>First Name</label>
     <input type='text' name='F_NAME' required>
