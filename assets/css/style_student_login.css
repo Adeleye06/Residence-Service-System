@@ -156,15 +156,39 @@ body, h1, h2, button, input, label {
     border: none;
     border-radius: 5px;
     transition: background-color 0.3s;
+<<<<<<< Updated upstream
     margin-right: 10px; /* Add margin-right for spacing between buttons */
     margin-bottom: 10px; /* Add margin-bottom for vertical spacing */
+=======
+    margin-right: 10px; 
+    margin-bottom: 10px; 
+>>>>>>> Stashed changes
 }
 
 .button:hover {
     background-color: #0056b3;
 }
 
+<<<<<<< Updated upstream
 /* Apply button styles to anchor tags */
+=======
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+}
+
+.content-section {
+    flex: 1; 
+}
+
+.site-footer {
+    flex-shrink: 0; 
+}
+
+
+
+>>>>>>> Stashed changes
 a.button {
     display: inline-block;
     text-decoration: none;

@@ -20,6 +20,21 @@ body {
     padding: 0.2rem 3rem;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+}
+
+.content-section {
+    flex: 1; 
+}
+
+.site-footer {
+    flex-shrink: 0; 
+}
+
+
 .site-header {
     display: flex;
     justify-content: space-between;
