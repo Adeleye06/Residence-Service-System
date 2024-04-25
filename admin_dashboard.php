@@ -19,6 +19,7 @@ quitIfNotAdmin();
                 <!-- <li><a href="profile.php">Profile</a></li>
                 <li><a href="saved-forms.php">My Saved Forms</a></li>
                 <li><a href="support.php">Contact Support</a></li> -->
+                <li><a href="help.html">Help</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
@@ -37,9 +38,9 @@ quitIfNotAdmin();
 </div>
 <div class="tabs-container">
     <div class="tabs">
-        <div class="tab active" onclick="openTab('dashboard');">Dashboard</div>
-        <div class="tab" onclick="openTab('forms');">Forms</div>
-        <div class="tab" onclick="openTab('reports');">Reports</div>
+<!--        <div class="tab active" onclick="openTab('dashboard');">Dashboard</div>-->
+        <div class="tab active" onclick="openTab('forms');">Forms</div>
+<!--        <div class="tab" onclick="openTab('reports');">Reports</div>-->
         <div class="tab" onclick="openTab('user');">User Management</div>
         <div class="tab" onclick="openTab('management');">Other Management</div>
     </div>
