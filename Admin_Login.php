@@ -14,7 +14,7 @@ if(isset($_POST['login'])){
     $password = $_POST['password'];
     if ($email && $password){
        // Using prepared statements to prevent SQL Injection
-       $sql = "SELECT c.PASSWORD, u.U_ID, u.USER_TYPE FROM credential c JOIN user u ON u.U_ID = c.U_ID WHERE u.email = ? AND USER_TYPE IS NOT NULL"; 
+       $sql = "SELECT c.PASSWORD, u.F_NAME, u.U_ID, u.USER_TYPE FROM credential c JOIN user u ON u.U_ID = c.U_ID WHERE u.email = ? AND USER_TYPE IS NOT NULL";
        $stmt = $conn->prepare($sql);
        if ($stmt) {
            $stmt->bind_param("s", $email); // 's' indicates the parameter type is a string
@@ -27,6 +27,7 @@ if(isset($_POST['login'])){
                    // Password is correct, redirect to admin dashboard
                     $_SESSION['U_ID'] = $row['U_ID'];
                     $_SESSION['USER_TYPE'] = $row['USER_TYPE'];
+                    $_SESSION['F_NAME'] = $row['F_NAME'];
                    $conn -> query("INSERT INTO ACCESS_LOG (U_ID, TIME) VALUES ({$row['U_ID']}, NOW())");
                    header("Location: admin_dashboard.php");
                    exit();
