@@ -86,18 +86,21 @@
                 <div class="login-form">
                     <h2>Student Login</h2><br>
                     <form action="Student_login.php" method="POST">
-                        <label for="email">College email address</label>
-                        <input type="email" id="email" name="email" value="<?php
+
+                        <?php
                         if(isset($_POST["generateOTP"])){
-                            echo $_POST["email"];
+                            echo "A Email containing a OTP Code have sent to the email {$_POST["email"]}... <br>Please check your email for the code and input here <br><br>";
+                            echo "<label for='password'>OTP</label><br><input id='password' name='password' type='text' inputmode='numeric' maxlength='6'>";
+
+                            echo "<button type='submit' name='login'>Log In</button>";
+
+                        }else{
+                            echo "<label for='email'>College email address</label>";
+                            echo "<input type='email' id='email' name='email' value='' required>";
+                            echo "<button type='submit' name='generateOTP'>Continue</button>";
                         }
-                        ?>" required>
-        
-                        <label for="password">OTP</label><br>
-                        <input id="password" name="password" type="text" inputmode="numeric" maxlength="6">
-        
-                        <button type="submit" name="generateOTP">Generate OTP</button>
-                        <button type="submit" name="login">Log In</button>
+                        ?>
+                        <button type='button' onclick="window.open('help.html','_blank')">Help</button>
                     </form>
                 </div>
             </div>
