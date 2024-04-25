@@ -34,7 +34,10 @@ quitIfNotAdmin();
 </div>
 
 
-<div class="content-section">    
+<div class="content-section">
+    <?php
+    echo "<h1>Welcome, " . $_SESSION["F_NAME"]."</h1>";
+    ?>
 </div>
 <div class="tabs-container">
     <div class="tabs">
@@ -44,13 +47,13 @@ quitIfNotAdmin();
         <div class="tab" onclick="openTab('user');">User Management</div>
         <div class="tab" onclick="openTab('management');">Other Management</div>
     </div>
-    <div id="dashboard" class="tab-content active-content">
+    <div id="dashboard" class="tab-content">
         <!-- Dashboard Here -->
     </div>
     
+
     
-    
-    <div id="forms" class="tab-content">
+    <div id="forms" class="tab-content active-content">
     <button class="button" onclick="window.location.href='forms/adminSeeAllForms.php'">
     <img src="assets/icons/online-survey.svg" alt="Online Survey Icon" style="vertical-align: middle;">
     Check all forms in the system
