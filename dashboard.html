@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .box {
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .box-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .box-value {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .box-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .chart-container {
+            grid-column: span 2;
+        }
+
+        .chart {
+            height: 200px;
+        }
+
+        .tips-container {
+            grid-column: span 2;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .tips-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .tips-item {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="box">
+        <i class="fas fa-database box-icon"></i>
+        <div class="box-title">Form Filled Today</div>
+        <div class="box-value">8</div>
+    </div>
+    <div class="box">
+        <i class="fas fa-users box-icon"></i>
+        <div class="box-title">System Access Today</div>
+        <div class="box-value">7</div>
+    </div>
+    <div class="box">
+        <i class="fas fa-chart-pie box-icon"></i>
+        <div class="box-title">Submitted Form Types</div>
+        <div class="chart-container">
+            <canvas id="pie-chart" class="chart"></canvas>
+        </div>
+    </div>
+    <div class="box">
+        <i class="fas fa-chart-line box-icon"></i>
+        <div class="box-title">System Access Count</div>
+        <div class="chart-container">
+            <canvas id="line-chart" class="chart"></canvas>
+        </div>
+    </div>
+    <div class="tips-container">
+        <div class="tips-title">Tips</div>
+        <ul class="tips-list">
+            <li class="tips-item">Import new residents regularly when they move in.</li>
+            <li class="tips-item">Create admin accounts with strong passwords.</li>
+            <li class="tips-item">Input the same emails to update accounts detail in accounts management page.</li>
+            <li class="tips-item">Keep the operating system up to date with the latest security patches.</li>
+            <li class="tips-item">Frequently check access log for any suspicious access.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    // Pie chart
+    const pieChart = document.getElementById('pie-chart');
+    const pieChartData = {
+        labels: ['Roommate Agreement Form', 'Guest Registration Form'],
+        datasets: [{
+            data: [62, 38],
+            backgroundColor: ['#FF6384', '#36A2EB']
+        }]
+    };
+    const pieChartConfig = {
+        type: 'pie',
+        data: pieChartData,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    };
+    const pieChartInstance = new Chart(pieChart, pieChartConfig);
+
+    // Line chart
+    const lineChart = document.getElementById('line-chart');
+    const lineChartData = {
+        labels: ['Apr 19', 'Apr 20', 'Apr 21', 'Apr 22', 'Apr 23', 'Apr 24', 'Apr 25'],
+        datasets: [{
+            label: 'Data',
+            data: [30, 24, 23, 57, 23, 33, 1],
+            borderColor: '#36A2EB',
+            backgroundColor: '#36A2EB',
+            fill: false
+        }]
+    };
+    const lineChartConfig = {
+        type: 'line',
+        data: lineChartData,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    };
+    const lineChartInstance = new Chart(lineChart, lineChartConfig);
+</script>
+</body>
+
+</html>
