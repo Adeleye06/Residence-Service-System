@@ -90,13 +90,6 @@ body, h1, h2, button, input, label {
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-=======
-=======
->>>>>>> Stashed changes
-}
->>>>>>> b6456f24026db295e7a34ce3d5bd7bc2b436d96c
 }
 
 
@@ -156,22 +149,14 @@ body, h1, h2, button, input, label {
     border: none;
     border-radius: 5px;
     transition: background-color 0.3s;
-<<<<<<< Updated upstream
     margin-right: 10px; /* Add margin-right for spacing between buttons */
     margin-bottom: 10px; /* Add margin-bottom for vertical spacing */
-=======
-    margin-right: 10px; 
-    margin-bottom: 10px; 
->>>>>>> Stashed changes
 }
 
 .button:hover {
     background-color: #0056b3;
 }
 
-<<<<<<< Updated upstream
-/* Apply button styles to anchor tags */
-=======
 body {
     display: flex;
     flex-direction: column;
@@ -186,9 +171,6 @@ body {
     flex-shrink: 0; 
 }
 
-
-
->>>>>>> Stashed changes
 a.button {
     display: inline-block;
     text-decoration: none;

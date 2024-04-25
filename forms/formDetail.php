@@ -24,11 +24,7 @@
         <ul>
             <li><a href="index.php">Home</a> <span>&gt;&gt;</span></li>
             <li><a href="student_dashboard.php">Student Dashboard</a> <span>&gt;&gt;</span></li>
-<<<<<<< Updated upstream
             <li><a href="getForm.php">Forms</a> <span>&gt;&gt;</span> </li>
-=======
-            <li><a href="getForm.php?id=2">Forms</a> <span>&gt;&gt;</span> </li>
->>>>>>> Stashed changes
             <li><a href="formDetail.php">Form Detail</a></li>
         </ul>
     </nav>
